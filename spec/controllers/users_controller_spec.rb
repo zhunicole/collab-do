@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
 	describe "POST create" do
-		let(:do_request) { post :create, user: {name: 'Gabe', email: 'g@foo.com', password: 'secret'} }
+		let(:do_request) { post :create, user: FactoryGirl.attributes_for(:user, name: 'Gabe') }
 		
 		it "Saves the new user to the db" do
 			expect(User.count).to eq(0)

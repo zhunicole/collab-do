@@ -35,6 +35,8 @@ gem 'better_errors'
 
 gem 'binding_of_caller'
 
+gem "factory_girl_rails", "~> 4.0"
+
 group :development do
 	gem 'quiet_assets'
 end
