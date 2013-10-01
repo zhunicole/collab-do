@@ -10,7 +10,10 @@ describe "the signin process" do
   	fill_in 'Name', :with => 'Nicole'
   	fill_in 'Email', :with => 'user@example.com'
   	fill_in 'Password', :with => 'password'
-    click_link 'Sign Up'
-    expect(page).to have_content 'Welcome, Nicole!'
+    click_on 'Sign Up'
+    
+    expect(page.status_code).to eq(200)
+    expect(page.body).to include('Welcome, Nicole!')
+
   end
 end

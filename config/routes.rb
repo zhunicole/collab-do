@@ -4,9 +4,21 @@ Collab::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root 'public#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  # get 'users/new' => 'users#new'
+  # post 'users' => 'users#create'
+
+  resources 'users', only: [:index, :new, :create]
+  get 'home' => 'users#home'  
+
+  # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
+  # post /users  (create) 
+  # put /usrers  (update)
+  # delete  /users (destroy)
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

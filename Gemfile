@@ -35,6 +35,9 @@ gem 'better_errors'
 
 gem 'binding_of_caller'
 
+group :development do
+	gem 'quiet_assets'
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
@@ -42,6 +45,7 @@ end
 
 group :test do
 	gem 'capybara'
+	gem 'launchy'
 end
 
 group :doc do
