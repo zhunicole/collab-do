@@ -11,6 +11,10 @@ describe User do
   	end
 
   	specify "users' passwords.length should be > 5" do
+  		gabePass = User.create name: 'Gabe', email: 'gabe@foo.com', password: '123456'
+  		gabeFail = User.create name: 'Gabe', email: 'gabe@foo.com', password: '12349'
+  		expect(gabePass).to be_valid
+  		expect(gabeFail.errors_on(:password)).to include("is too short (minimum is 6 characters)")
 
   	end
 
