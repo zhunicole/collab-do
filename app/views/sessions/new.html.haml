@@ -1,6 +1,8 @@
 Sign In
 
 
+- if flash[:errors] 
+	= flash[:errors]
 
 = simple_form_for :session, :url => sessions_path do |f|
 	=f.input :email

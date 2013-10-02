@@ -35,5 +35,7 @@ describe User do
    
   end
 
+#it { should respond_to(:password_digest) }
+
 
 end

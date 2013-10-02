@@ -7,10 +7,12 @@ class SessionsController < ApplicationController
 
 	def create
 		user = User.find_by_email(params[:session][:email])
-		if user 
+		
+		if user
 			session[:current_user] = user
 			redirect_to '/home'
 		else
+			flash[:errors] = "invalid email"
 			render 'new' 
 		end
 	end
