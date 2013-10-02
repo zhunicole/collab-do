@@ -22,7 +22,6 @@ describe "the signup process" do
     fill_in 'Password', :with => 'badpw'
 
     click_on 'Sign Up'
-
     expect(page.body).to include('Password is too short')
   end
 end

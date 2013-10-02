@@ -19,7 +19,7 @@ Collab::Application.routes.draw do
   # SESSIONS
   resources :sessions, only: [:new, :create, :destroy]
   get '/signin' => 'sessions#new'
-  # post 'sessions' => 'sessions#create'
+  #post '/sessions' => 'sessions#create'
   delete '/signout' => 'sessions#destroy'
   
 

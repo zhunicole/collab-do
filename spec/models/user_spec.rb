@@ -32,9 +32,7 @@ describe User do
   		expect(bad_pw_user.errors_on(:password)).to include("is too short (minimum is 6 characters)")
   	end
 
-    pending "user's passwords should pass all validations" do
-        expect(1==2).to be_true
-    end
+   
   end
 
 

@@ -1,12 +1,18 @@
 class SessionsController < ApplicationController
 
-	def new  #new session
-
+	def new  #new session created when user clicks sign in
+		# set currnet user... if sign in is success then
+		
 	end
 
 	def create
-		# @user = User.find_by_email(params[:email])
-		
+		user = User.find_by_email(params[:session][:email])
+		if user 
+			session[:current_user] = user
+			redirect_to '/home'
+		else
+			render 'new' 
+		end
 	end
 
 	def destroy
