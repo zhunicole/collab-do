@@ -37,6 +37,8 @@ gem 'binding_of_caller'
 
 gem "factory_girl_rails", "~> 4.0"
 
+gem 'bcrypt-ruby', '3.0.1'
+
 group :development do
 	gem 'quiet_assets'
 end

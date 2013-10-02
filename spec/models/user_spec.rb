@@ -32,10 +32,38 @@ describe User do
   		expect(bad_pw_user.errors_on(:password)).to include("is too short (minimum is 6 characters)")
   	end
 
+    specify "users' password and password_confirmation should be equal" do
+      bad_pw_user = FactoryGirl.build(:user, password: 'abcdef', password_confirmation: 'qwerty')
+      expect(bad_pw_user.errors_on(:password_confirmation)).to include("doesn't match Password")
+    end
    
   end
 
-#it { should respond_to(:password_digest) }
+it { should respond_to(:password_digest) }
+it { should respond_to(:password) }
+it { should respond_to(:password_confirmation) }
+
+it { should respond_to(:authenticate) }
+
+describe "#authenticate" do 
+  before do
+    FactoryGirl.create(:user, email: 'g@h.com', password: '123456', password_confirmation: '123456')
+  end
+  
+  let(:user) { User.find_by_email('g@h.com') }
+  
+  describe "with valid password" do
+    specify do
+      expect(user.authenticate('123456')).to eq(user)
+    end
+  end
+
+  describe "with invalid password" do
+    specify do
+      expect(user.authenticate('invalid')).to be_false
+    end
+  end
+end
 
 
 end

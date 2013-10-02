@@ -14,7 +14,7 @@ describe "Authentication" do
   describe "with valid information" do
 		before do
 			fill_in "Email", :with => user.email 
-			fill_in "Password", :with => user.password 
+			fill_in "session_password", :with => user.password 
 			click_button "Sign in"
 		end
 
@@ -25,12 +25,20 @@ describe "Authentication" do
   end
   
   describe "with invalid information" do
-  	before do 
-  		fill_in "Email", :with => 'someInvalidEmail'
-  		click_button "Sign in"
-  	end
+  	describe 'invalid email'
+    before do
+      fill_in "Email", :with => 'someInvalidEmail'
+      click_button "Sign in"
+    end
+    it { should have_text('invalid email')}
+  end
 
-  	it { should have_text('invalid email')}
-	end
-
+  describe 'invalid password' do
+    before do
+      fill_in "Email", :with => user.email
+      fill_in "session_password", :with => 'invalid'
+      click_button "Sign in"
+    end
+    it { should have_text('invalid password')}
+  end
 end
