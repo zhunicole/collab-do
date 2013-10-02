@@ -9,11 +9,13 @@ class UsersController < ApplicationController
 	def create
 		current_user = User.new(user_params)
 		if current_user.save
+			session[:current_user] = current_user
+			redirect_to '/home'
 		else 
+			@user = current_user
 			render 'new'
 		end
-		session[:current_user] = current_user
-		redirect_to '/home'
+		
 	end
 
 	def home
