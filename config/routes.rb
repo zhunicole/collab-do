@@ -11,7 +11,7 @@ Collab::Application.routes.draw do
   # get 'users/new' => 'users#new'
   # post 'users' => 'users#create'
 
-  resources 'users', only: [:index, :new, :create]
+  resources 'users', only: [:index, :show, :new, :create]
   get 'home' => 'users#home'  
 
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
