@@ -22,8 +22,9 @@ Collab::Application.routes.draw do
   #post '/sessions' => 'sessions#create'
   delete '/signout' => 'sessions#destroy'
   
-
-
+  # PROJECTS
+  resources :projects, only: [:new, :create]
+  get '/newproject' => 'projects#new'
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
   # post /users  (create) 
   # put /usrers  (update)
