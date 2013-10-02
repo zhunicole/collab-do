@@ -32,7 +32,7 @@ describe 'Authentication' do
       describe 'invalid password' do
         before do
           fill_in "Email", :with => user.email
-          fill_in "session_password", :with => 'invalid'
+          fill_in "Password", :with => 'invalid'
           click_button "Sign in"
         end
         it { should have_text('invalid email and or invalid password')}

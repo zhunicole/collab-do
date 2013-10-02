@@ -9,8 +9,8 @@ describe "the signup process" do
   it "signs me up" do
   	fill_in 'Name', :with => 'Nicole'
     fill_in 'Email', :with => 'user@example.com'
-  	fill_in 'user_password', :with => 'secret'
-    fill_in 'user_password_confirmation', :with => 'secret'
+  	fill_in 'Password', :with => 'secret'
+    fill_in 'Password confirmation', :with => 'secret'
     click_on 'Sign Up'
     
     expect(page.status_code).to eq(200)
@@ -20,8 +20,8 @@ describe "the signup process" do
   it "it gives error message with bad signup" do
     fill_in 'Name', :with => 'username'
     fill_in 'Email', :with => 'good@email.com'
-    fill_in 'user_password', :with => 'badpw'
-    fill_in 'user_password_confirmation', :with => 'badpw'
+    fill_in 'Password', :with => 'badpw'
+    fill_in 'Password confirmation', :with => 'badpw'
 
     click_on 'Sign Up'
     expect(page.body).to include('Password is too short')

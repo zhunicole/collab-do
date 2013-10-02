@@ -5,9 +5,9 @@ Sign In
 	= flash[:errors]
 
 = simple_form_for :session, :url => sessions_path do |f|
-	=f.input :email
-	=f.input :password
-	=f.input :password_confirmation
+	=f.input :email, required: false
+	=f.input :password, required: false
+	=f.input :password_confirmation, required: false
 	=f.submit 'Sign in'
 
 	
