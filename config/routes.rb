@@ -11,8 +11,18 @@ Collab::Application.routes.draw do
   # get 'users/new' => 'users#new'
   # post 'users' => 'users#create'
 
-  resources 'users', only: [:index, :show, :new, :create]
-  get 'home' => 'users#home'  
+  resources :users, only: [:index, :show, :new, :create]
+  get '/signup' => 'users#new'
+  get '/home' => 'users#home'  
+
+
+  # SESSIONS
+  resources :sessions, only: [:new, :create, :destroy]
+  get '/signin' => 'sessions#new'
+  # post 'sessions' => 'sessions#create'
+  delete '/signout' => 'sessions#destroy'
+  
+
 
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
   # post /users  (create) 

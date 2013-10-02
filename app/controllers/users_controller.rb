@@ -8,7 +8,10 @@ class UsersController < ApplicationController
 
 	def create
 		current_user = User.new(user_params)
-		current_user.save
+		if current_user.save
+		else 
+			render 'new'
+		end
 		session[:current_user] = current_user
 		redirect_to '/home'
 	end
