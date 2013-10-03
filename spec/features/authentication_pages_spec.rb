@@ -8,7 +8,7 @@ describe 'Authentication' do
     before { visit signin_path }
 
     describe "signin page" do
-      it { should have_text('Sign In') }
+      it { should have_text('Sign in') }
     end
 
     describe "with valid information" do
@@ -40,7 +40,8 @@ describe 'Authentication' do
     end
   end
 
-  describe "Signing Out" do
+
+  pending "Signing Out" do
     context 'when signed in' do
       before do
         sign_in user
@@ -49,7 +50,9 @@ describe 'Authentication' do
       it 'lets the user sign out' do
         visit '/home'
         # click_on 'Sign out'
-        expect(page).to have_text 'Signed out.'
+        # and redirect to index page
+        expect(page).to have_text 'Sign up'
+        page.should_not have_text 'Sign out'
       end
 
       it 'destroys the current session' do

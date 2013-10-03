@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "the signup process" do
   before :each do
     visit '/'
-    click_on 'Sign Up'
+    click_on 'Sign up'
   end
 
   it "signs me up" do
@@ -11,7 +11,7 @@ describe "the signup process" do
     fill_in 'Email', :with => 'user@example.com'
   	fill_in 'Password', :with => 'secret'
     fill_in 'Password confirmation', :with => 'secret'
-    click_on 'Sign Up'
+    click_on 'Sign up'
     
     expect(page.status_code).to eq(200)
     expect(page.body).to include('Welcome, Nicole!')
@@ -23,7 +23,7 @@ describe "the signup process" do
     fill_in 'Password', :with => 'badpw'
     fill_in 'Password confirmation', :with => 'badpw'
 
-    click_on 'Sign Up'
+    click_on 'Sign up'
     expect(page.body).to include('Password is too short')
   end
 end
