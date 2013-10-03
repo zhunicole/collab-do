@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 	def create
 		current_user = User.new(user_params)
 		if current_user.save
-			session[:current_user] = current_user
+			session[:user_id] = current_user.id
 			redirect_to '/home'
 		else 
 			@user = current_user
@@ -19,7 +19,8 @@ class UsersController < ApplicationController
 	end
 
 	def home
-		@current_user = session[:current_user]
+		@current_user = User.find(session[:user_id])
+		@projects = @current_user.projects
 	end
 
 	private

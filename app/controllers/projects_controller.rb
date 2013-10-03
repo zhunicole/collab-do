@@ -5,12 +5,13 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
+		@project = Project.new(project_params.merge(user_id: session[:user_id]))		
 
-		current_user = session[:current_user]
-		@project = Project.new(project_params)
-		@project.user = current_user
-
-		if @project then @project.save end
+		if @project.save then 
+			redirect_to '/home'
+		else
+			render 'new'
+		end
 
 
 	end

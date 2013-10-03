@@ -11,9 +11,9 @@ describe UsersController do
 			expect(User.first.name).to eq('Gabe')
 		end
 
-		it "assigns the created user to the session" do
+		it "assigns the user's id to the session" do
 			do_request
-			expect(session[:current_user].name).to eq('Gabe')
+			expect(session[:user_id]).to be_kind_of(Integer)
 		end
 
 		it 'redirects to user\'s home page' do 

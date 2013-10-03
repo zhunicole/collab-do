@@ -2,9 +2,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+	
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -31,7 +30,7 @@ gem 'haml'
 
 gem 'simple_form'
 
-gem 'better_errors'
+#gem 'better_errors'
 
 gem 'binding_of_caller'
 
@@ -45,11 +44,16 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+  gem 'pry'
+  gem 'pry-debugger'
+  gem 'pry-stack_explorer'
 end
 
 group :test do
 	gem 'capybara'
 	gem 'launchy'
+	gem 'selenium-webdriver'
+	gem 'database_cleaner'
 end
 
 group :doc do
