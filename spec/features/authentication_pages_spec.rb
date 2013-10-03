@@ -49,7 +49,10 @@ describe 'Authentication' do
       it 'lets the user sign out' do
         visit '/home'
         # click_on 'Sign out'
-        # expect(page).to have_text 'Signed out.'
+        expect(page).to have_text 'Signed out.'
+      end
+
+      it 'destroys the current session' do
       end
     end
   end
