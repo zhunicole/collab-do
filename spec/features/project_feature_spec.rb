@@ -6,7 +6,6 @@ describe 'Project actions' do
 
 	before(:each) do
 			sign_in user
-			visit '/home'
 	end
 	
 	describe "Creating new project" do
@@ -56,7 +55,7 @@ describe 'Project actions' do
       click_on 'Delete project'
     end
     it 'displays default info and saves new changes' do
-      expect(page).to not_have_text 'Project summary and descrip'
+      expect(page).to_not have_text 'Project summary and descrip'
     end
 
   end

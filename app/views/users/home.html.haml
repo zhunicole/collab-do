@@ -1,9 +1,0 @@
-%h1= "Welcome, #{@current_user.name}!"
-
-%a(href="newproject") Create new project	
-
-%ul
-- @projects.each do |p|
-	%li
-		= link_to p.name, project_path(p)
-	

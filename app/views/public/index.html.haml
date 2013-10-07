@@ -1,14 +1,25 @@
-Index Page! This will have better UI for signin in
+HOME PAGE
 
 %br
 %br
 
-- unless session[:user_id] 		
-	%a(href="signup") Sign up
-	%a(href="signin") Sign in
+- unless user_signed_in? 		
+	.div
+		= link_to 'Sign up', new_user_registration_path
+		= link_to 'Log in', new_user_session_path
+- else 
+
+	%br
+
+	= link_to 'Create new project', new_project_path
+	%br
+	%br
+
+	- userProjects = Project.find_all_by_user_id current_user.id
+	- if userProjects.length > 0
+		- userProjects.each do |p|
+			= link_to p.name, edit_project_path(p)
 
 
 %br
-%br
-Display regular homepage in the background!
 

@@ -6,10 +6,11 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		@project = Project.new(project_params.merge(user_id: session[:user_id]))		
+		@project = Project.new(project_params.merge(user_id: current_user.id))		
 
 		if @project.save then 
-			redirect_to '/home'
+			redirect_to '/'
+			# TODO should redirect to project
 		else
 			render 'new'
 		end

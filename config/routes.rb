@@ -6,20 +6,21 @@ Collab::Application.routes.draw do
   # root 'welcome#index'
   root 'public#index'
 
-  resources :users, only: [:index, :show, :new, :create]
-  get '/signup' => 'users#new'
-  get '/home' => 'users#home'  
+  devise_for :users, :path => "users", :path_names => { 
+    :sign_in => 'login', :sign_out => 'logout', :password => 'secret', 
+    :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', 
+    :sign_up => 'sign_up' }
+
 
 
   # SESSIONS
-  resources :sessions, only: [:new, :create, :destroy]
-  get '/signin' => 'sessions#new'
-  #post '/sessions' => 'sessions#create'   redundant
-  get '/signout' => 'sessions#destroy'
+  # resources :sessions, only: [:new, :create, :destroy]
+  # get '/signin' => 'sessions#new'
+  # #post '/sessions' => 'sessions#create'   redundant
+  # get '/signout' => 'sessions#destroy'
   
   # PROJECTS
   resources :projects, only: [:new, :create, :destroy]
-  get '/newproject' => 'projects#new'
   get '/projects/:id', to: 'projects#show'
   get '/projects/edit/:id', to: 'projects#edit', as: 'edit_project'
   patch '/projects/:id', to: 'projects#update' 

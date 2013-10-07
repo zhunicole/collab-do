@@ -1,9 +1,0 @@
-
-= render 'shared/error_messages'
-
-= simple_form_for @user do |f| 
-  = f.input :name, required: false
-  = f.input :email, required: false
-  = f.input :password, required: false
-  = f.input :password_confirmation, required: false
-  = f.submit 'Sign up'
