@@ -4,22 +4,10 @@ HOME PAGE
 %br
 
 - unless user_signed_in? 		
-	.div
-		= link_to 'Sign up', new_user_registration_path
-		= link_to 'Log in', new_user_session_path
+	= render 'layouts/public_home'
 - else 
-
-	%br
-
-	= link_to 'Create new project', new_project_path
-	%br
-	%br
-
-	- userProjects = Project.where(:user_id => current_user.id)
-	- if userProjects.length > 0
-		- userProjects.each do |p|
-			= link_to p.name, project_path(p)
-
+	= render 'layouts/user_home'
 
 %br
+
 

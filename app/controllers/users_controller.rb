@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
 
-def destroy
-
-end
 
 
+
+
+	def project_params
+		params.require(:user).permit(:name, :email)
+	end
 end

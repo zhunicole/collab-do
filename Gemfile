@@ -28,7 +28,13 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# user accounts / session manager
 gem 'devise'
+
+# image uploading gems
+gem 'carrierwave'
+gem 'rmagick'
+
 
 gem 'haml'
 
