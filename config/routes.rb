@@ -6,11 +6,6 @@ Collab::Application.routes.draw do
   # root 'welcome#index'
   root 'public#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-  # get 'users/new' => 'users#new'
-  # post 'users' => 'users#create'
-
   resources :users, only: [:index, :show, :new, :create]
   get '/signup' => 'users#new'
   get '/home' => 'users#home'  
@@ -23,11 +18,12 @@ Collab::Application.routes.draw do
   get '/signout' => 'sessions#destroy'
   
   # PROJECTS
-  resources :projects, only: [:new, :create]
+  resources :projects, only: [:new, :create, :destroy]
   get '/newproject' => 'projects#new'
-  get '/projects/:id', to: 'projects#show', as: 'project'
+  get '/projects/:id', to: 'projects#show'
   get '/projects/edit/:id', to: 'projects#edit', as: 'edit_project'
   patch '/projects/:id', to: 'projects#update' 
+  delete '/projects', to: 'projects#destroy'
 
 
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)

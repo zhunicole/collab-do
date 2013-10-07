@@ -1,0 +1,7 @@
+Editing project: 
+=@project.name
+
+= simple_form_for @project do |f| 
+  = f.input :name, value: @project.name, required: false
+  = f.input :description, value: @project.description, required: false
+  = f.submit 'Save'

@@ -1,0 +1,17 @@
+
+// nav no session
+
+//nav for session
+
+//nav for sign in / sign up
+- if session[:user_id] 		
+	%a.navSignOut(href="signout") Sign Out
+
+-else
+	%a.navSignUp(href="signup") Sign Up
+	%a.navSignIn(href="signin") Sign In
+
+
+
+
+

@@ -1,0 +1,15 @@
+%br
+Name:
+%br 
+= @project.name
+%br
+%br
+Project Description:
+%br
+= @project.description
+
+%br
+%br
+= link_to 'Edit project', edit_project_path(@project)
+%br
+= link_to 'Delete project', project_path(@project), :method => :delete

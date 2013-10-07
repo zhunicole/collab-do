@@ -34,7 +34,11 @@ class ProjectsController < ApplicationController
 			# TODO set some flash error message
 			render 'edit'
 		end
+	end
 
+	def destroy
+		(Project.find params[:id]).destroy
+		redirect_to '/home'
 	end
 
 	def project_params
