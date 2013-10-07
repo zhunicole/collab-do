@@ -2,15 +2,32 @@ require 'spec_helper'
 
 describe ProjectsController do
 	describe "POST create" do
-		let(:do_request) { post :create }
+		let(:do_request) { post :create, project: FactoryGirl.attributes_for(:project) }		
 		
-		# it "Saves the new user to the db" do
-		# 	expect(User.count).to eq(0)
-		# 	do_request
-		# 	expect(User.count).to eq(1)
-		# 	expect(User.first.name).to eq('Gabe')
-		# end
-
+		describe "creates new project" do
+			it "saves to db" do
+				expect(Project.count).to eq(0)
+				do_request
+				expect(Project.count).to eq(1)
+				expect(Project.first.name).to eq('Project title')
+			end
+		end
 	end
 
+	describe "PUT update" do
+
+		describe "PUT 'update/:id'" do
+			before do 
+				@project = FactoryGirl.create(:project)
+			end
+
+		  it "allows a project to be updated" do
+		    @attr = { :name => "new name", :description => "new description" }
+		    put :update, :id => @project.id, :project => @attr
+		    @project.reload
+		    @project.name.should == @attr[:name]
+		    @project.description.should == @attr[:description] 
+		  end
+		end
+	end
 end

@@ -19,6 +19,9 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
+		# sign up 
+		session[:user_id] = nil
+		redirect_to ''
 	end
 
 

@@ -16,8 +16,8 @@ describe 'Authentication' do
 
   		it { should have_text(user.name) }
       # it { should have_link('Profile',     href: user_path(user)) }
-      # it { should have_link('Sign out',    href: signout_path) }
-      # it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Sign Out',    href: 'signout') }
+      it { should_not have_link('Sign In', href: 'signin') }
     end
     
     describe "with invalid information" do
@@ -41,21 +41,17 @@ describe 'Authentication' do
   end
 
 
-  pending "Signing Out" do
+  describe "Signing Out" do
     context 'when signed in' do
       before do
         sign_in user
+        visit '/home'
+        click_on 'Sign Out'
       end
 
       it 'lets the user sign out' do
-        visit '/home'
-        # click_on 'Sign out'
-        # and redirect to index page
-        expect(page).to have_text 'Sign up'
-        page.should_not have_text 'Sign out'
-      end
-
-      it 'destroys the current session' do
+        expect(page).to have_link 'Sign up'
+        page.should_not have_link 'Sign out'
       end
     end
   end

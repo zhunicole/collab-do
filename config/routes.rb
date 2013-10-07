@@ -19,15 +19,20 @@ Collab::Application.routes.draw do
   # SESSIONS
   resources :sessions, only: [:new, :create, :destroy]
   get '/signin' => 'sessions#new'
-  #post '/sessions' => 'sessions#create'
-  delete '/signout' => 'sessions#destroy'
+  #post '/sessions' => 'sessions#create'   redundant
+  get '/signout' => 'sessions#destroy'
   
   # PROJECTS
   resources :projects, only: [:new, :create]
   get '/newproject' => 'projects#new'
+  get '/projects/:id', to: 'projects#show', as: 'project'
+  get '/projects/edit/:id', to: 'projects#edit', as: 'edit_project'
+  patch '/projects/:id', to: 'projects#update' 
+
+
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
   # post /users  (create) 
-  # put /usrers  (update)
+  # put /users  (update)
   # delete  /users (destroy)
 
 

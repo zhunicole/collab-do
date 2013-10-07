@@ -1,4 +1,14 @@
+Index Page! This will have better UI for signin in
+
 %br
-%a(href="signup") Sign up
 %br
-%a(href='signin') Sign in
+
+- unless session[:user_id] 		
+	%a(href="signup") Sign up
+	%a(href="signin") Sign in
+
+
+%br
+%br
+Display regular homepage in the background!
+
