@@ -1,15 +1,15 @@
 require 'feature_spec_helper'
 
 describe 'Project actions' do
-
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:project) { FactoryGirl.create(:project, :user_id => user.id)}
 
   before(:each) do
-      sign_in FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
+    visit '/'
   end
 	
-	let(:project) { FactoryGirl.create(:project, :user_id => user.id)}
-	
-	pending  "Creating new project" do
+	describe  "Creating new project" do
 		it 'lets the user create a new project' do
 			click_on 'Create new project'			
 			expect(page).to have_text 'new project'
@@ -20,7 +20,7 @@ describe 'Project actions' do
 		end
   end
 
-  pending "Viewing an existing project" do
+  describe "Viewing an existing project" do
   	context 'for public and user' do
   		it 'shows project details' do
   			click_on project.name
@@ -29,7 +29,7 @@ describe 'Project actions' do
   	end
   end
 
-  pending "Editing an existing project" do
+  describe "Editing an existing project" do
   	
     before(:each) do
       click_on project.name
@@ -49,7 +49,7 @@ describe 'Project actions' do
     end
   end
 
-  pending "Deleting an existing project" do
+  describe "Deleting an existing project" do
     
     before(:each) do
       click_on project.name

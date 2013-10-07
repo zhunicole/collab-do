@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe ProjectsController do
+	let(:user) { FactoryGirl.create(:user) }
 	before(:each) do
-		sign_in :user, @user
+		sign_in user
 	end
 
-	pending "POST create" do
+	describe "POST create" do
 		let(:do_request) { post :create, project: FactoryGirl.attributes_for(:project) }		
 		
 		describe "creates new project" do
@@ -18,7 +19,7 @@ describe ProjectsController do
 		end
 	end
 
-	pending "PUT update" do
+	describe "PUT update" do
 
 		describe "PUT 'update/:id'" do
 			before do 
