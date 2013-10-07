@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
 
 	def destroy
 		(Project.find params[:id]).destroy
-		redirect_to '/home'
+		redirect_to '/'
 	end
 
 	def project_params
