@@ -1,7 +1,12 @@
 
 - if user_signed_in?		
 	= link_to 'Home', root_path
+	&nbsp
+	&nbsp
 	= link_to 'Sign Out', destroy_user_session_path, :method => :delete
+	&nbsp
+	&nbsp
+	= link_to 'Edit login', edit_user_registration_path
 
 
 -else
