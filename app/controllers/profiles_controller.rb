@@ -1,14 +1,11 @@
 class ProfilesController < ApplicationController
      
   def edit
-    @user = User.find(current_user.id)
 
   end
 
   def update
-    @user = User.find(current_user.id)
-    
-  	if @user.update_attributes(user_params) then 
+  	if current_user.update_attributes(user_params) then 
       redirect_to ''
     else 
       render 'edit'
