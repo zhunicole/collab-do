@@ -15,10 +15,19 @@ describe 'Project actions' do
 			expect(page).to have_text 'new project'
 			fill_in 'Name', :with => 'Learn to dance'
 			fill_in 'Description', :with => 'I need a dancing partner'
-			click_on 'Create project'
+			fill_in 'Location', :with => 'loc'
+      fill_in 'Start time', :with => '2010-02-02 16:20:12'
+      fill_in 'End time', :with => '2010-04-01 16:20:12'
+      click_on 'Create project'
 			expect(page).to have_content('Learn to dance')
 		end
+
+
+    pending 'doesnt let user specify wrong dates' do
+    end
+
   end
+
 
   describe "Viewing an existing project" do
   	context 'for public and user' do

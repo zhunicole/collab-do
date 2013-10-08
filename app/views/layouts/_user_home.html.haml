@@ -1,0 +1,45 @@
+.pull-left
+	= link_to 'Create new project', new_project_path
+	%br
+	%br
+	- userProjects = Project.where(:creator => current_user.id)
+	- if userProjects.length > 0
+		- userProjects.each do |p|
+			= link_to p.name, project_path(p)
+.pull-right
+	.text-right
+		%strong User Profile
+		%br 
+		Name:
+		%br
+		- u = current_user
+		= u.first_name + ' ' + u.last_name if (u.first_name && u.last_name)
+		%br 
+		%br
+		Email:
+		%br
+		= u.email if u.email 
+		%br
+		%br
+		Location:
+		%br
+		= u.location if u.location
+		%br
+		%br
+		Image:
+		%br
+		=image_tag u.avatar.thumb.url if u.avatar
+		%br
+		%br
+		Blurb:
+		%br
+		= u.blurb if u.blurb
+		%br
+		%br
+		Portfolio:
+		%br
+		= u.portfolio if u.portfolio 
+		%br
+		%br
+
+		= link_to 'Edit profile', edit_profile_path

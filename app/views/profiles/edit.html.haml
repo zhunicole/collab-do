@@ -1,0 +1,18 @@
+%h2 Edit Profile
+
+= simple_form_for current_user, url: update_profile_path, method: 'patch' do |f|
+  = f.error_notification
+  .div 
+    .form-inputs
+      = f.input :first_name, value: @user.first_name, required: true, autofocus: true
+      = f.input :last_name, value: @user.last_name, required: true
+      = f.input :location, value: @user.location, required: false
+      = f.input :blurb, value: @user.blurb, required: false
+      = f.input :avatar, value: @user.avatar, required: false
+      = f.input :portfolio, value: @user.portfolio, required: false
+  .div
+    .form-actions
+      = f.button :submit, "Update"
+
+
+

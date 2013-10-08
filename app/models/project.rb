@@ -3,6 +3,10 @@ class Project < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :description, presence: true
+	validates :location, presence: true
+	validates :start_time, presence: true
+	validates :end_time, presence: true
+	# validates :avatar, presence: true
 
 	mount_uploader :avatar, AvatarUploader
 
