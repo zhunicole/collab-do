@@ -4,10 +4,11 @@
   = f.error_notification
   .div 
     .form-inputs
-      = f.input :first_name, value: current_user.first_name, required: false
-      = f.input :last_name, value: current_user.last_name, required: false
+      = f.input :first_name, value: current_user.first_name
+      = f.input :last_name, value: current_user.last_name
       = f.input :location, value: current_user.location, required: false
       = f.input :blurb, value: current_user.blurb, required: false
+      = image_tag current_user.avatar.thumb.url if current_user.avatar
       = f.input :avatar, value: current_user.avatar, required: false
       = f.input :portfolio, value: current_user.portfolio, required: false
   .div
