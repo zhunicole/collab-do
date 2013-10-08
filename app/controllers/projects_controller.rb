@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		@project = Project.new(project_params.merge(user_id: current_user.id))		
+		@project = Project.new(project_params.merge(creator: current_user.id))		
 
 		if @project.save then 
 			redirect_to '/'
@@ -45,6 +45,6 @@ class ProjectsController < ApplicationController
 	end
 
 	def project_params
-		params.require(:project).permit(:name, :description, :user_id)
+		params.require(:project).permit(:name, :description, :creator)
 	end
 end

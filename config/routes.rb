@@ -11,17 +11,10 @@ Collab::Application.routes.draw do
     :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', 
     :sign_up => 'sign_up' }
 
-  # devise_for :users, :controllers => {:profile => "profile"}
+  # for user to update profile information
   get '/edit_profile', to: 'profiles#edit', as: 'edit_profile' 
   patch '/edit_profile', to: 'profiles#update', as: 'update_profile'
 
-  # for user to update profile information
-  # SESSIONS
-  # resources :sessions, only: [: new, :create, :destroy]
-  # get '/signin' => 'sessions#new'
-  # #post '/sessions' => 'sessions#create'   redundant
-  # get '/signout' => 'sessions#destroy'
-  
   # PROJECTS
   resources :projects, only: [:new, :create, :destroy]
   get '/projects/:id', to: 'projects#show'
