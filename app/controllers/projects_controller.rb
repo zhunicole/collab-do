@@ -22,11 +22,13 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find params[:id]
 		@title = 'Show Project'
+		@creator =  User.find(@project.creator)
 	end
 
 	def edit
 		@project = Project.find params[:id]
 		@title = 'Edit Project'
+
 	end
 
 	def update
@@ -34,7 +36,6 @@ class ProjectsController < ApplicationController
 		if @project.update_attributes(project_params) then
 			redirect_to project_path
 		else 
-			# TODO set some flash error message
 			render 'edit'
 		end
 	end

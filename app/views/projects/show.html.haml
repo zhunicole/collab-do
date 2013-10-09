@@ -1,3 +1,5 @@
+= image_tag @project.avatar.url if @project.avatar
+
 %br
 Name:
 %br 
@@ -7,8 +9,27 @@ Name:
 Project Description:
 %br
 = @project.description
-
 %br
+%br
+Project Status: 
+= 'Live project' if @project.ongoing
+%br
+Created by: 
+= @creator.first_name + @creator.last_name
+%br
+Location: 
+= @project.location
+%br 
+
+- if @project.ongoing
+	Started:
+	= @project.start_time
+	%br 
+	Ending: 
+	= @project.end_time
+- else 
+	This project has ended
+
 %br
 = link_to 'Edit project', edit_project_path(@project)
 %br

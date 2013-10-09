@@ -39,11 +39,19 @@ describe 'Project actions' do
   end
 
   describe "Editing an existing project" do
-  	
+  	let(:unauthoUser) { FactoryGirl.create(:user, :email => 'z@z.com') }
+   
     before(:each) do
       click_on project.name
       click_on 'Edit project'
     end
+
+    it 'doesnt permit noncreators to edit projects' do
+      click_on 'Sign Out'
+      login_as(unauthoUser, :scope => :user) 
+      visit "http://localhost:3000/projects/edit/" + project.id.to_s
+    end
+
 		it 'displays default info and saves new changes' do
       fill_in 'Name', :with => 'New Name for Proj'
       click_on 'Save'
@@ -56,6 +64,7 @@ describe 'Project actions' do
       click_on 'Save'
       expect(page).to have_content "Namecan't be blank"
     end
+
   end
 
   describe "Deleting an existing project" do
