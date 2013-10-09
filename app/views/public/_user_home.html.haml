@@ -1,47 +1,42 @@
 .pull-left
 	= link_to 'Create new project', new_project_path
-	%br
-	%br
 	
 	Projects created by:
 	= current_user.first_name
-	%br
+
 	- userProjects = current_user.projects
 	- if userProjects
 		- userProjects.each do |p|
 			= link_to p.name, project_path(p)
-			%br
+
 .pull-right
 	.text-right
-		%strong User Profile
-		%br
-		- u = current_user
-		=image_tag u.avatar.thumb.url if u.avatar
-		%br 
-		Name:
-		%br
-		= u.first_name + ' ' + u.last_name if (u.first_name && u.last_name)
-		%br 
-		%br
-		Email:
-		%br
-		= u.email if u.email 
-		%br
-		%br
-		Location:
-		%br
-		= u.location if u.location
-		%br
-		%br
-		Blurb:
-		%br
-		= u.blurb if u.blurb
-		%br
-		%br
-		Portfolio:
-		%br
-		= u.portfolio if u.portfolio 
-		%br
-		%br
+		.user_profile
+			%strong User Profile
+			- u = current_user
+			%dl
+				.user_info
+					%dt Avatar
+					%dd= image_tag u.avatar.thumb.url if u.avatar		
+				
+				.user_info
+					%dt Name:
+					%dd= u.first_name + ' ' + u.last_name if (u.first_name && u.last_name)
+				
+				.user_info
+					%dt Email:
+					%dd= u.email if u.email 
+				
+				.user_info
+					%dt Location:
+					%dd= u.location if u.location
+				
+				.user_info
+					%dt Blurb:
+					%dd= u.blurb if u.blurb
+				
+				.user_info
+					%dt Portfolio:
+					%dd= u.portfolio if u.portfolio 
 
-		= link_to 'Edit profile', edit_profile_path
+			= link_to 'Edit profile', edit_profile_path
