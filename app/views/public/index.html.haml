@@ -1,13 +1,6 @@
 HOME PAGE
 
-%br
-%br
-
-- unless user_signed_in? 		
-	= render 'layouts/public_home'
+- if user_signed_in? 		
+	= render 'user_home'
 - else 
-	= render 'layouts/user_home'
-
-%br
-
-
+	= render 'public_home'
