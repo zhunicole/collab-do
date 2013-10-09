@@ -27,9 +27,9 @@ Collab::Application.routes.draw do
 
   # PAGE ERRORS
 
-  get "/404", :to => "errors#not_found"
-  get "/422", :to => "errors#unacceptable"
-  get "/500", :to => "errors#internal_error"
+  get "/404", :to => "errors#not_found", as: 'not_found'
+  get "/422", :to => "errors#unacceptable", as: 'unacceptable'
+  get "/500", :to => "errors#internal_error", as: 'internal_error'
 
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
   # post /users  (create) 

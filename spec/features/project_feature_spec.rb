@@ -50,6 +50,7 @@ describe 'Project actions' do
       click_on 'Sign Out'
       login_as(unauthoUser, :scope => :user) 
       visit "http://localhost:3000/projects/edit/" + project.id.to_s
+      expect(page).to have_text 'The change you wanted was rejected.'
     end
 
 		it 'displays default info and saves new changes' do

@@ -26,9 +26,10 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
-		@project = Project.find params[:id]
-		@title = 'Edit Project'
 
+		@project = Project.find params[:id]
+		if current_user.id != @project.creator then redirect_to unacceptable_path end
+		@title = 'Edit Project'
 	end
 
 	def update
