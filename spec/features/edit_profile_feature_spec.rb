@@ -1,6 +1,5 @@
 require 'feature_spec_helper'
 
-
 describe 'Editing user profile' do
   let!(:user) { FactoryGirl.create(:user) }
 

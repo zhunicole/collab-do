@@ -1,13 +1,4 @@
-= link_to 'Sign up', new_user_registration_path
-= link_to 'Log in', new_user_session_path
-
-%br
-%br
-Collection of Projects!
-%br
-/ contains public view of projects
-- userProjects = Project.all
-- if userProjects.length > 0
-	- userProjects.each do |p|
-		= link_to p.name, project_path(p)
-		%br
+%h1 Collection of Projects!
+%ul
+- @projects.each do |p|
+	%li= link_to p.name, project_path(p)
