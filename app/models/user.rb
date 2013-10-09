@@ -13,4 +13,11 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, on: :update
   validates :location, presence: true, on: :update
 
+
+  def name
+  	first_name + ' ' + last_name
+  end
+
+
 end
+
