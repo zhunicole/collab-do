@@ -15,7 +15,7 @@ Project Status:
 = 'Live project' if @project.ongoing
 %br
 Created by: 
-= @creator.first_name + @creator.last_name
+= @user_id.first_name + @user_id.last_name
 %br
 Location: 
 = @project.location
@@ -33,4 +33,4 @@ Location:
 %br
 = link_to 'Edit project', edit_project_path(@project)
 %br
-= link_to 'Delete project', project_path(@project), :method => :delete, :confirm => 'Are you sure you wish to delete this project?'
+= link_to 'Delete project', project_path(@project), :method => :delete, data: { confirm: 'Are you sure your wish to delete this project?' }

@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		@project = Project.new(project_params.merge(creator: current_user.id))		
+		@project = Project.new(project_params.merge(user_id: current_user.id))		
 
 		if @project.save then 
 			redirect_to '/'
@@ -22,13 +22,13 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find params[:id]
 		@title = 'Show Project'
-		@creator =  User.find(@project.creator)
+		@user_id =  User.find(@project.user_id)
 	end
 
 	def edit
 
 		@project = Project.find params[:id]
-		if current_user.id != @project.creator then redirect_to unacceptable_path end
+		if current_user.id != @project.user_id then redirect_to unacceptable_path end
 		@title = 'Edit Project'
 	end
 
@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def project_params
-		params.require(:project).permit(:name, :description, :creator, 
+		params.require(:project).permit(:name, :description, :user_id, 
 			:location, :start_time, :end_time, :avatar)
 	end
 end

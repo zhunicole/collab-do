@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20131008070039) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "creator"
+    t.integer  "user_id"
     t.string   "location"
     t.datetime "start_time"
     t.datetime "end_time"

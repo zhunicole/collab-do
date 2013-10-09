@@ -2,7 +2,7 @@ require 'feature_spec_helper'
 
 describe 'Project actions' do
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:project) { FactoryGirl.create(:project, :creator => user.id)}
+  let!(:project) { FactoryGirl.create(:project, :user_id => user.id)}
 
   before(:each) do
     login_as(user, :scope => :user)
