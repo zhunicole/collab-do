@@ -1,13 +1,11 @@
 class Project < ActiveRecord::Base
-	belongs_to :user
+	has_and_belongs_to_many :users
 
 	validates :name, presence: true
 	validates :description, presence: true
 	validates :location, presence: true
 	validates :start_time, presence: true
 	validates :end_time, presence: true
-	# validates :avatar, presence: true
-
 	mount_uploader :avatar, AvatarUploader
 
 end

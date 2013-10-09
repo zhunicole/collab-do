@@ -1,5 +1,6 @@
 class AddAttributesToProjects < ActiveRecord::Migration
   def change
+  	rename_column :projects, :user_id, :creator_id
 
   	add_column :projects, :location, :string
   	add_column :projects, :start_time, :datetime

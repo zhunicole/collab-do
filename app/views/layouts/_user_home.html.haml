@@ -2,6 +2,10 @@
 	= link_to 'Create new project', new_project_path
 	%br
 	%br
+	
+	Projects created by:
+	= current_user.first_name
+	%br
 	- userProjects = current_user.projects
 	- if userProjects
 		- userProjects.each do |p|
