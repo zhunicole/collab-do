@@ -50,7 +50,7 @@ describe 'Project actions' do
     it 'doesnt permit noncreators to edit projects' do
       click_on 'Sign Out'
       login_as(unauthoUser, :scope => :user) 
-      visit "http://localhost:3000/projects/edit/" + project.id.to_s
+      visit "http://localhost:3000/projects/#{project.id.to_s}/edit"
       expect(page).to have_text 'The change you wanted was rejected.'
     end
 

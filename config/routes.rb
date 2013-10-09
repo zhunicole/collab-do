@@ -6,27 +6,26 @@ Collab::Application.routes.draw do
   # root 'welcome#index'
   root 'public#index'
 
-  devise_for :users, :path => "users", :path_names => { 
-    :sign_in => 'login', :sign_out => 'logout', :password => 'secret', 
-    :confirmation => 'verification', :unlock => 'unblock', :registration => 'register', 
-    :sign_up => 'sign_up' }
+  devise_for :users, 
+    :path => "users",
+    :path_names => { 
+      :sign_in => 'login',
+      :sign_out => 'logout',
+      :password => 'secret', 
+      :confirmation => 'verification', 
+      :unlock => 'unblock', 
+      :registration => 'register', 
+      :sign_up => 'sign_up' 
+    }
 
   # for user to update profile information
   get '/edit_profile', to: 'profiles#edit', as: 'edit_profile' 
   patch '/edit_profile', to: 'profiles#update', as: 'update_profile'
 
   # PROJECTS
-  resources :projects, only: [:new, :create, :destroy]
-  get '/projects/:id', to: 'projects#show'
-  get '/projects/edit/:id', to: 'projects#edit', as: 'edit_project'
-  patch '/projects/:id', to: 'projects#update' 
-  delete '/projects', to: 'projects#destroy'
-
-
-
+  resources :projects
 
   # PAGE ERRORS
-
   get "/404", :to => "errors#not_found", as: 'not_found'
   get "/422", :to => "errors#unacceptable", as: 'unacceptable'
   get "/500", :to => "errors#internal_error", as: 'internal_error'
