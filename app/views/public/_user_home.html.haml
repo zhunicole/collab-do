@@ -1,15 +1,24 @@
 .pull-left
 	= link_to 'Create new project', new_project_path
+	.div
+		= link_to 'Collab on projects'
 	
+
 	.user_projects	
 		Projects created by:
 		= current_user.name
-		.div
-			- userProjects = current_user.projects
-			- if userProjects
-				- userProjects.each do |p|
-					= link_to p.name, project_path(p)
+		%ul
+			- @created = Project.where(creator_id: current_user.id)
+			- @created.each do |p|
+				%li= link_to p.name, project_path(p)
 	
+	.user_projects	
+		Collab projects:
+		%ul
+			- @collabed = current_user.projects - @created
+			- @collabed.each do |p|
+				%li= link_to p.name, project_path(p)
+
 .pull-right
 	.text-right
 		.user_profile

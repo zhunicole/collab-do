@@ -30,6 +30,11 @@
 		- else 
 			%dt This project has ended
 
-= link_to 'Edit project', edit_project_path(@project)
+-if current_user == @project.creator
+	= link_to 'Edit project', edit_project_path(@project)
 
-= link_to 'Delete project', project_path(@project), :method => :delete, data: { confirm: 'Are you sure your wish to delete this project?' }
+	= link_to 'Delete project', project_path(@project), :method => :delete, data: { confirm: 'Are you sure your wish to delete this project?' }
+-elsif !@project.users.include? current_user 
+	= link_to 'Join project', collab_project_path(@project)
+-else
+	= link_to 'Quit project', quit_project_path(@project)

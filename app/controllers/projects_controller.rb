@@ -45,6 +45,18 @@ class ProjectsController < ApplicationController
 		redirect_to '/'
 	end
 
+	def collab
+		@project = Project.find params[:id]
+		current_user.projects << @project
+		redirect_to '/'
+	end
+
+	def quit
+		@project = Project.find params[:id]
+		current_user.projects.destroy(@project)
+		redirect_to '/'
+	end
+
 	def project_params
 		params.require(:project).permit(:name, :description, :creator_id,
 			:location, :start_time, :end_time, :avatar)

@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe ProjectsController do
-	let(:user) { FactoryGirl.create(:user) }
+	let!(:user) { FactoryGirl.create(:user) }
 	before(:each) do
 		sign_in user
 	end
 
 	describe "POST create" do
-		let(:do_request) { post :create, project: FactoryGirl.attributes_for(:project) }		
+		let(:do_request) { post :create, project: FactoryGirl.attributes_for(:project, creator_id: user.id) }		
 		
 		describe "creates new project" do
 			it "saves to db" do
@@ -16,7 +16,13 @@ describe ProjectsController do
 				expect(Project.count).to eq(1)
 				expect(Project.first.name).to eq('Project title')
 			end
+
+			it ' now has user as collaborator' do
+				do_request
+				expect(user.projects.length).to eq 1
+			end
 		end
+
 	end
 
 	describe "PUT update" do
@@ -33,6 +39,18 @@ describe ProjectsController do
 		    @project.name.should == @attr[:name]
 		    @project.description.should == @attr[:description] 
 		  end
+		end
+	end
+
+	pending '#collab' do
+		# has user already
+		let(:project) { FactoryGirl.create(:project, id: user.id) }
+		let(:do_request) { get :collab, project: project }		
+
+		it 'lets user join (collaborate) on a project' do
+			expect(project.users.length).to eq 0
+			do_request
+			expect(project.users.length).to eq 2
 		end
 	end
 end

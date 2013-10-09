@@ -24,6 +24,8 @@ Collab::Application.routes.draw do
 
   # PROJECTS
   resources :projects
+  get 'projects/:id/collab', to: 'projects#collab', as: 'collab_project'  
+  get 'projects/:id/quit', to: 'projects#quit', as: 'quit_project'  
 
   # PAGE ERRORS
   get "/404", :to => "errors#not_found", as: 'not_found'
@@ -32,7 +34,7 @@ Collab::Application.routes.draw do
 
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
   # post /users  (create) 
-  # put /users  (update)
+  # patch /users  (update)
   # delete  /users (destroy)
 
 

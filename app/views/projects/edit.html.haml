@@ -17,9 +17,9 @@ Editing project:
 			= f.input_field :end_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
 			%span.add-on
 				%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
-	%br
-	= image_tag @project.avatar.thumb.url if @project.avatar
-	= f.input :avatar, value: @project.avatar.thumb.url, required: false
+	.project_avatar
+		= image_tag @project.avatar.thumb.url if @project.avatar
+		= f.input :avatar, value: @project.avatar.thumb.url, required: false
 
 	= f.submit 'Save'
 
