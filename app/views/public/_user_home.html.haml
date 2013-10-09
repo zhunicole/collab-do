@@ -1,14 +1,15 @@
 .pull-left
 	= link_to 'Create new project', new_project_path
 	
-	Projects created by:
-	= current_user.first_name
-
-	- userProjects = current_user.projects
-	- if userProjects
-		- userProjects.each do |p|
-			= link_to p.name, project_path(p)
-
+	.user_projects	
+		Projects created by:
+		= current_user.first_name
+		.div
+			- userProjects = current_user.projects
+			- if userProjects
+				- userProjects.each do |p|
+					= link_to p.name, project_path(p)
+	lalaalalal
 .pull-right
 	.text-right
 		.user_profile

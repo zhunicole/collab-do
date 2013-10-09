@@ -8,4 +8,11 @@ class Project < ActiveRecord::Base
 	validates :end_time, presence: true
 	mount_uploader :avatar, AvatarUploader
 
+
+
+	def creator
+		
+		User.find(creator_id)
+	end
+
 end
