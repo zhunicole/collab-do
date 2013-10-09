@@ -3,13 +3,13 @@
 	
 	.user_projects	
 		Projects created by:
-		= current_user.first_name
+		= current_user.name
 		.div
 			- userProjects = current_user.projects
 			- if userProjects
 				- userProjects.each do |p|
 					= link_to p.name, project_path(p)
-	lalaalalal
+	
 .pull-right
 	.text-right
 		.user_profile

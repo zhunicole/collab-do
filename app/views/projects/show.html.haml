@@ -1,36 +1,35 @@
 = image_tag @project.avatar.url if @project.avatar
 
-%br
-Name:
-%br 
-= @project.name
-%br
-%br
-Project Description:
-%br
-= @project.description
-%br
-%br
-Project Status: 
-= 'Live project' if @project.ongoing
-%br
-Created by: 
-= @creator_id.first_name + @creator_id.last_name
-%br
-Location: 
-= @project.location
-%br 
+%dl
+	.project_info
+		%dt Name:
+		%dd= @project.name
+	
+	.project_info
+		%dt Project Description:
+		%dd= @project.description
+	
+	.project_info
+		%dt Project Status: 
+		%dd= 'Live project' if @project.ongoing
 
-- if @project.ongoing
-	Started:
-	= @project.start_time
-	%br 
-	Ending: 
-	= @project.end_time
-- else 
-	This project has ended
+	.project_info
+		%dt Created by: 
+		%dd= @project.creator.name
+	
+	.project_info
+		%dt Location: 
+		%dd= @project.location
 
-%br
+	.project_info
+		- if @project.ongoing
+			%dt Started:
+			%dd= @project.start_time	 
+			%dt Ending: 
+			%dd= @project.end_time
+		- else 
+			%dt This project has ended
+
 = link_to 'Edit project', edit_project_path(@project)
-%br
+
 = link_to 'Delete project', project_path(@project), :method => :delete, data: { confirm: 'Are you sure your wish to delete this project?' }

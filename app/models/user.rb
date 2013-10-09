@@ -15,7 +15,11 @@ class User < ActiveRecord::Base
 
 
   def name
-  	first_name + ' ' + last_name
+    if first_name and last_name then
+    	first_name + ' ' + last_name
+    else 
+      'User Name'
+    end
   end
 
 end

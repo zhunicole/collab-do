@@ -12,8 +12,7 @@ class ProjectsController < ApplicationController
 
 		if @project.save then 
 			current_user.projects << @project
-			redirect_to '/'
-			# TODO should redirect to project
+			redirect_to project_path(@project.id)
 		else
 			render 'new'
 		end
@@ -23,7 +22,6 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find params[:id]
 		@title = 'Show Project'
-		@creator_id =  User.find(@project.creator_id)
 	end
 
 	def edit
