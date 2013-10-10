@@ -10,9 +10,13 @@ class Project < ActiveRecord::Base
 
 	validate :valid_times
 
-
-
 	mount_uploader :avatar, AvatarUploader
+
+
+	scope :inactive, lambda { where('end_time < ?', DateTime.now )}
+
+	scope :active, lambda { where('end_time >= ?', DateTime.now) }
+
 
 	def valid_times
 		if end_time < start_time
@@ -30,5 +34,8 @@ class Project < ActiveRecord::Base
 		User.find(creator_id)
 	end
 
+	def active?
+		active.includes?(this)
+	end
 
 end
