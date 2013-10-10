@@ -21,4 +21,12 @@ it { should respond_to(:users) }
 
 		end
 	end
+
+	describe '#valid_times' do
+		it 'doesnt let user misorder the project dates' do
+			proj = FactoryGirl.build(:project, start_time: DateTime.now, 
+				end_time: DateTime.now)
+			proj.should_not be_valid
+		end
+	end
 end
