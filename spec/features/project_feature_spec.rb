@@ -2,14 +2,15 @@ require 'feature_spec_helper'
 
 describe 'Project actions' do
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:project) { FactoryGirl.create(:project, :creator_id => user.id)}
+  let!(:project) { FactoryGirl.create(:project, creator_id: user.id)}
 
   before(:each) do
     login_as(user, :scope => :user)
     user.projects << project
     visit '/'
   end
-	
+
+
 	describe  "Creating new project" do
 		it 'lets the user create a new project' do
 			click_on 'Create new project'			
@@ -81,17 +82,34 @@ describe 'Project actions' do
   end
 
 
-  pending "Collabing on projects" do
+
+
+  describe "Collabing on projects" do
+    let!(:otherUser) { FactoryGirl.create(:user, email: 'a@a.com') }
+    let!(:otherProject) { FactoryGirl.create(:project, id: 20, creator_id: otherUser.id) }
+
+    before(:each) do
+      click_on 'Sign Out'
+      login_as(user, :scope => :user) 
+      otherUser.projects << otherProject
+      visit "http://localhost:3000/projects/20"
+      click_link 'Join project'
+    end
+
+
+    it 'lets users join/delete projects, views corresponding' do
+      expect(page).to have_text 'Quit project'
+    end
+
+    it 'displays collabers in project description' do
+      user.projects << otherProject
+      # save_and_open_page
+      # within('.collaber_class') do
+        expect(page).to have_text(user.name)
+      # end
+    end
 
     describe 'User can browse for external projects to collab' do
-
-    end
-
-    describe 'User can join/delete projects, views corresponding' do
-
-    end
-
-    describe 'User can then see herself in project description' do
 
     end
   end

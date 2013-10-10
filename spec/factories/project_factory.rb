@@ -7,5 +7,6 @@ FactoryGirl.define do
 		avatar 'someavatarstring'
 		start_time DateTime.now
 		end_time DateTime.now
+		ongoing true
 	end
 end

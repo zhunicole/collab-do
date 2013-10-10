@@ -12,13 +12,6 @@
 			- @created = Project.where(creator_id: current_user.id)
 			- @created.each do |p|
 				%li= link_to p.name, project_path(p)
-	
-	.user_projects	
-		Collab projects:
-		%ul
-			- @collabed = current_user.projects - @created
-			- @collabed.each do |p|
-				%li= link_to p.name, project_path(p)
 
 .pull-right
 	.text-right

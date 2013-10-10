@@ -50,13 +50,13 @@ class ProjectsController < ApplicationController
 	def collab
 		@project = Project.find params[:id]
 		current_user.projects << @project
-		redirect_to '/'
+		redirect_to project_path(@project)
 	end
 
 	def quit
 		@project = Project.find params[:id]
 		current_user.projects.destroy(@project)
-		redirect_to '/'
+		redirect_to project_path(@project)
 	end
 
 	def project_params
