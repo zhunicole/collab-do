@@ -35,7 +35,10 @@ class Project < ActiveRecord::Base
 	end
 
 	def active?
-		active.includes?(this)
+		Project.active.each do |p|
+			if p == self then return true end
+		end
+		false
 	end
 
 end

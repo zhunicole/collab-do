@@ -2,14 +2,16 @@
 	.div
 		= image_tag @project.avatar.url if @project.avatar
 
-	-if current_user == @project.creator
-		= link_to 'Edit project', edit_project_path(@project)
+	- if @project.active?
+		-if current_user == @project.creator
+			= link_to 'Edit project', edit_project_path(@project)
 
-		= link_to 'Delete project', project_path(@project), :method => :delete, data: { confirm: 'Are you sure your wish to delete this project?' }
-	-elsif !@project.users.include? current_user 
-		= link_to 'Join project', collab_project_path(@project)
-	-else
-		= link_to 'Quit project', quit_project_path(@project)
+			= link_to 'Delete project', project_path(@project), :method => :delete, data: { confirm: 'Are you sure your wish to delete this project?' }
+
+		-elsif !@project.users.include? current_user 
+			= link_to 'Join project', collab_project_path(@project)
+		-else
+			= link_to 'Quit project', quit_project_path(@project)
 
 
 	%dl
@@ -21,10 +23,6 @@
 			%dt Project Description:
 			%dd= @project.description
 		
-		.project_info
-			%dt Project Status: 
-			%dd= 'Live project' if @project.ongoing
-
 		.project_info
 			%dt Created by: 
 			%dd= @project.creator.name

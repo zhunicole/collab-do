@@ -39,6 +39,10 @@ describe ProjectsController do
 		    @project.name.should == @attr[:name]
 		    @project.description.should == @attr[:description] 
 		  end
+
+		  it "only allows for updates only when active" do
+			end
+
 		end
 	end
 
@@ -64,5 +68,33 @@ describe ProjectsController do
 			expect(project.users.length).to eq 1
 		end
 
+		it "only allows for updates only when active" do
+			# same for delete
+
+		end
+	end
+
+	describe 'Actions when project is not active' do
+		let(:project) { 
+			p = FactoryGirl.build(:project, id: user.id,
+			start_time: '2000-02-02 16:20:12', end_time: '2000-04-04 16:20:12')
+			p.save(validate: false) 
+			p 
+		}
+		let(:do_collab) { get :collab, id: project.id }	
+
+
+		it 'doesnt let creator edit or delete' do
+			@attr = { :name => "new name" }
+	    put :update, :id => project.id, :project => @attr
+	    project.reload
+	    project.name.should_not == @attr[:name]			
+		end
+
+		it 'doesnt let other users join or quit' do
+			do_collab
+			project.reload
+			expect(project.users.length).to eq 0
+		end
 	end
 end
