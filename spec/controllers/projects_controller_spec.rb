@@ -55,9 +55,14 @@ describe ProjectsController do
 		end
 
 		it 'doesnt let user collab >1 time' do
+			expect(project.users.length).to eq 0
+			do_request
+			project.reload
+			expect(project.users.length).to eq 1
+			do_request
+			project.reload
+			expect(project.users.length).to eq 1
 		end
 
-		it 'lets user quit' do
-		end
 	end
 end
