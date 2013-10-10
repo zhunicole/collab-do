@@ -67,11 +67,9 @@ describe 'Project actions' do
       click_on 'Save'
       expect(page).to have_content "Namecan't be blank"
     end
-
   end
 
   describe "Deleting an existing project" do
-    
     before(:each) do
       click_on project.name
       click_on 'Delete project'
@@ -80,9 +78,6 @@ describe 'Project actions' do
       expect(page).to_not have_text 'Project summary and descrip'
     end
   end
-
-
-
 
   describe "Collabing on projects" do
     let!(:otherUser) { FactoryGirl.create(:user, email: 'a@a.com') }
@@ -107,10 +102,6 @@ describe 'Project actions' do
       # within('.collaber_class') do
         expect(page).to have_text(user.name)
       # end
-    end
-
-    describe 'User can browse for external projects to collab' do
-
     end
   end
 end

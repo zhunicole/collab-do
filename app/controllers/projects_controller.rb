@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
 
 	def collab
 		@project = Project.find params[:id]
-		current_user.projects << @project
+		current_user.projects << @project unless current_user.projects.include?(@project)
 		redirect_to project_path(@project)
 	end
 
@@ -57,6 +57,12 @@ class ProjectsController < ApplicationController
 		@project = Project.find params[:id]
 		current_user.projects.destroy(@project)
 		redirect_to project_path(@project)
+	end
+
+
+	def ongoing_projects
+		@projects = Project.where(ongoing: true)
+
 	end
 
 	def project_params

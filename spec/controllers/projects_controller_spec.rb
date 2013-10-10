@@ -42,15 +42,16 @@ describe ProjectsController do
 		end
 	end
 
-	pending '#collab' do
+	describe '#collab' do
 		# has user already
 		let(:project) { FactoryGirl.create(:project, id: user.id) }
-		let(:do_request) { get :collab, project: project }		
+		let(:do_request) { get :collab, id: project.id }		
 
 		it 'lets user join (collaborate) on a project' do
 			expect(project.users.length).to eq 0
 			do_request
-			expect(project.users.length).to eq 2
+			project.reload
+			expect(project.users.length).to eq 1
 		end
 
 		it 'doesnt let user collab >1 time' do
