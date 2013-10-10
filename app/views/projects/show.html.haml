@@ -32,7 +32,7 @@
 			%dd= @project.location
 
 		.project_info
-			- if @project.ongoing
+			- if @project.active?
 				%dt Started:
 				%dd= @project.start_time	 
 				%dt Ending: 

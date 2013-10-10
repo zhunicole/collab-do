@@ -1,5 +1,5 @@
 %h1 Collection of Projects!
 %ul
 - @projects.each do |p|
-	- if p.ongoing
+	- if p.active?
 		%li= link_to p.name, project_path(p)

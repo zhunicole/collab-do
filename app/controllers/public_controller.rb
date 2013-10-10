@@ -1,6 +1,6 @@
 class PublicController < ApplicationController
 	def index
-		@projects = Project.where(ongoing: true)
+		@projects = Project.active
 
 	end
 
