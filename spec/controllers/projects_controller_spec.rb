@@ -22,7 +22,7 @@ describe ProjectsController do
 				expect(user.projects.length).to eq 1
 			end
 		end
-
+		
 	end
 
 	describe "PUT update" do
@@ -51,6 +51,12 @@ describe ProjectsController do
 			expect(project.users.length).to eq 0
 			do_request
 			expect(project.users.length).to eq 2
+		end
+
+		it 'doesnt let user collab >1 time' do
+		end
+
+		it 'lets user quit' do
 		end
 	end
 end

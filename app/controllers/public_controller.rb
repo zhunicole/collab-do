@@ -3,4 +3,6 @@ class PublicController < ApplicationController
 		@projects = Project.all
 
 	end
+
+
 end

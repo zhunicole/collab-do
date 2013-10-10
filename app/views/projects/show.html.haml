@@ -1,40 +1,53 @@
-= image_tag @project.avatar.url if @project.avatar
+.pull-left
+	.div
+		= image_tag @project.avatar.url if @project.avatar
 
-%dl
-	.project_info
-		%dt Name:
-		%dd= @project.name
-	
-	.project_info
-		%dt Project Description:
-		%dd= @project.description
-	
-	.project_info
-		%dt Project Status: 
-		%dd= 'Live project' if @project.ongoing
+	-if current_user == @project.creator
+		= link_to 'Edit project', edit_project_path(@project)
 
-	.project_info
-		%dt Created by: 
-		%dd= @project.creator.name
-	
-	.project_info
-		%dt Location: 
-		%dd= @project.location
+		= link_to 'Delete project', project_path(@project), :method => :delete, data: { confirm: 'Are you sure your wish to delete this project?' }
+	-elsif !@project.users.include? current_user 
+		= link_to 'Join project', collab_project_path(@project)
+	-else
+		= link_to 'Quit project', quit_project_path(@project)
 
-	.project_info
-		- if @project.ongoing
-			%dt Started:
-			%dd= @project.start_time	 
-			%dt Ending: 
-			%dd= @project.end_time
-		- else 
-			%dt This project has ended
 
--if current_user == @project.creator
-	= link_to 'Edit project', edit_project_path(@project)
+	%dl
+		.project_info
+			%dt Name:
+			%dd= @project.name
+		
+		.project_info
+			%dt Project Description:
+			%dd= @project.description
+		
+		.project_info
+			%dt Project Status: 
+			%dd= 'Live project' if @project.ongoing
 
-	= link_to 'Delete project', project_path(@project), :method => :delete, data: { confirm: 'Are you sure your wish to delete this project?' }
--elsif !@project.users.include? current_user 
-	= link_to 'Join project', collab_project_path(@project)
--else
-	= link_to 'Quit project', quit_project_path(@project)
+		.project_info
+			%dt Created by: 
+			%dd= @project.creator.name
+		
+		.project_info
+			%dt Location: 
+			%dd= @project.location
+
+		.project_info
+			- if @project.ongoing
+				%dt Started:
+				%dd= @project.start_time	 
+				%dt Ending: 
+				%dd= @project.end_time
+			- else 
+				%dt This project has ended
+
+%ul.pull-right.collaber_list
+	Project collabers: 
+	- @collabers.each do |c|
+		- if c.id != @project.creator.id
+			%li
+				= image_tag c.avatar.thumb.url if c.avatar
+				= c.name 
+
+

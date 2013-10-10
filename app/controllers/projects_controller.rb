@@ -22,6 +22,8 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find params[:id]
 		@title = 'Show Project'
+		@collabers = @project.users
+		
 	end
 
 	def edit

@@ -78,6 +78,21 @@ describe 'Project actions' do
     it 'displays default info and saves new changes' do
       expect(page).to_not have_text 'Project summary and descrip'
     end
+  end
 
+
+  pending "Collabing on projects" do
+
+    describe 'User can browse for external projects to collab' do
+
+    end
+
+    describe 'User can join/delete projects, views corresponding' do
+
+    end
+
+    describe 'User can then see herself in project description' do
+
+    end
   end
 end
