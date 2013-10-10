@@ -6,6 +6,7 @@ describe 'Editing user profile' do
   before(:each) do
     login_as(user, :scope => :user)
     visit '/'
+    click_on 'My profile'
     click_on 'Edit profile'
   end
 

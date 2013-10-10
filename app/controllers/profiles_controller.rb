@@ -2,13 +2,22 @@ class ProfilesController < ApplicationController
 
   before_filter :authenticate_user!
 
-  def edit
 
+  def show
+    @user = User.find params[:id]
+  end
+
+  def edit
+    @user = User.find params[:id]
+    if current_user != @user then
+      redirect_to unacceptable_path
+    end
   end
 
   def update
-  	if current_user.update_attributes(user_params) then 
-      redirect_to ''
+    @user = User.find params[:id]
+  	if @user.update_attributes(user_params) then 
+      redirect_to profile_path(@user)
     else 
       render 'edit'
     end

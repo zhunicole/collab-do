@@ -1,59 +1,25 @@
-.pull-left
+= link_to 'Create new project', new_project_path
+.div
+	= link_to 'Collab on projects'
+	This should be a search bar
 
-	= link_to 'Create new project', new_project_path
-	.div
-		= link_to 'Collab on projects'
-		This should be a search bar
+.user_projects	
+	= current_user.name + '\'s active projects:'
+	%ul
+		- @active_projects_by_user = Project.active.where(creator_id: current_user.id)
+		- @active_projects_by_user.each do |p|
+			%li= link_to p.name, project_path(p)
 
-	.user_projects	
-		= current_user.name + '\'s active projects:'
-		%ul
-			- @active_projects_by_user = Project.active.where(creator_id: current_user.id)
-			- @active_projects_by_user.each do |p|
-				%li= link_to p.name, project_path(p)
+.user_projects	
+	= current_user.name + '\'s partner projects:'
+	%ul
+		- @collabed = current_user.projects.active - @active_projects_by_user
+		- @collabed.each do |p|
+			%li= link_to p.name, project_path(p)
 
-	.user_projects	
-		= current_user.name + '\'s partner projects:'
-		%ul
-			- @collabed = current_user.projects.active - @active_projects_by_user
-			- @collabed.each do |p|
-				%li= link_to p.name, project_path(p)
-
-	.user_projects	
-		= current_user.name + '\'s past projects:'
-		%ul
-			- @past_projects = current_user.projects.inactive
-			- @past_projects.each do |p|
-				%li= link_to p.name, project_path(p)
-
-.pull-right
-	.text-right
-		.user_profile
-			%strong User Profile
-			- u = current_user
-			%dl
-				.user_info
-					%dt Avatar
-					%dd= image_tag u.avatar.thumb.url if u.avatar		
-				
-				.user_info
-					%dt Name:
-					%dd= u.first_name + ' ' + u.last_name if (u.first_name && u.last_name)
-				
-				.user_info
-					%dt Email:
-					%dd= u.email if u.email 
-				
-				.user_info
-					%dt Location:
-					%dd= u.location if u.location
-				
-				.user_info
-					%dt Blurb:
-					%dd= u.blurb if u.blurb
-				
-				.user_info
-					%dt Portfolio:
-					%dd= u.portfolio if u.portfolio 
-
-			= link_to 'Edit profile', edit_profile_path
+.user_projects	
+	= current_user.name + '\'s past projects:'
+	%ul
+		- @past_projects = current_user.projects.inactive
+		- @past_projects.each do |p|
+			%li= link_to p.name, project_path(p)

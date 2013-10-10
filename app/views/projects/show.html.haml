@@ -16,6 +16,15 @@
 
 	%dl
 		.project_info
+		- if @project.active?
+			%dt Started:
+			%dd= @project.start_time	 
+			%dt Ending: 
+			%dd= @project.end_time
+		- else 
+			%dt This project has ended
+
+		.project_info
 			%dt Name:
 			%dd= @project.name
 		
@@ -31,14 +40,6 @@
 			%dt Location: 
 			%dd= @project.location
 
-		.project_info
-			- if @project.active?
-				%dt Started:
-				%dd= @project.start_time	 
-				%dt Ending: 
-				%dd= @project.end_time
-			- else 
-				%dt This project has ended
 
 %ul.pull-right.collaber_list
 	Project collabers: 
@@ -46,6 +47,6 @@
 		- if c.id != @project.creator.id
 			%li
 				= image_tag c.avatar.thumb.url if c.avatar
-				= c.name 
+				= c.name
 
 

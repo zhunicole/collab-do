@@ -19,8 +19,9 @@ Collab::Application.routes.draw do
     }
 
   # for user to update profile information
-  get '/edit_profile', to: 'profiles#edit', as: 'edit_profile' 
-  patch '/edit_profile', to: 'profiles#update', as: 'update_profile'
+  get '/profiles/:id/edit', to: 'profiles#edit', as: 'edit_profile' 
+  patch '/profiles/:id/update', to: 'profiles#update', as: 'update_profile'
+  get '/profiles/:id', to: 'profiles#show', as: 'profile'
 
   # PROJECTS
   resources :projects
