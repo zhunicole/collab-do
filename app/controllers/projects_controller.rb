@@ -2,6 +2,10 @@ class ProjectsController < ApplicationController
 
 	before_filter :authenticate_user!
 
+	def index
+		@open_projects = Project.active
+	end
+
 	def new
 		@project = Project.new
 		@title = 'Create project'

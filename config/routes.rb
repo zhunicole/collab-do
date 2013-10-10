@@ -27,6 +27,7 @@ Collab::Application.routes.draw do
   resources :projects
   get 'projects/:id/collab', to: 'projects#collab', as: 'collab_project'  
   get 'projects/:id/quit', to: 'projects#quit', as: 'quit_project'  
+  # get '/projects', to: 'projects#index', as: 'projects'
 
   # PAGE ERRORS
   get "/404", :to => "errors#not_found", as: 'not_found'
