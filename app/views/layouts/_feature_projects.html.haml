@@ -4,11 +4,13 @@
       .col-lg-12.text-center
         %h2 Featured Projects
         %hr/
-
+        /TODO: eventually these need to be featured projects
       - Project.active.each do |p|
         - if p.active? 
           .col-lg-4.col-md-4.col-sm-6
             %a{href: project_path(p)}
               %img.img-responsive.img-home-portfolio
+                .h4          
+                  =p.name
                 =image_tag p.avatar.url
-                =p.name
+                

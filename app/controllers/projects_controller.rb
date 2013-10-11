@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@open_projects = Project.active
+		@open_projects = Project.active - current_user.projects.active
 	end
 
 	def new
