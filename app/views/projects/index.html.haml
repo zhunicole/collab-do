@@ -1,0 +1,6 @@
+All Active Projects: 
+
+.user_projects
+	%ul
+		- @open_projects.each do |p|
+			%li= link_to p.name, project_path(p)

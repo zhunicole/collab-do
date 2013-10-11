@@ -1,0 +1,30 @@
+.user_profile
+	%strong User Profile
+	- u = @user
+	%dl
+		.user_info
+			%dt Avatar
+			%dd= image_tag u.avatar.thumb.url if u.avatar		
+		
+		.user_info
+			%dt Name:
+			%dd= u.first_name + ' ' + u.last_name if (u.first_name && u.last_name)
+		
+		.user_info
+			%dt Email:
+			%dd= u.email if u.email 
+		
+		.user_info
+			%dt Location:
+			%dd= u.location if u.location
+		
+		.user_info
+			%dt Blurb:
+			%dd= u.blurb if u.blurb
+		
+		.user_info
+			%dt Portfolio:
+			%dd= u.portfolio if u.portfolio 
+
+	-if current_user == @user
+		= link_to 'Edit profile', edit_profile_path(@user)
