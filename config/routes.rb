@@ -6,6 +6,8 @@ Collab::Application.routes.draw do
   # root 'welcome#index'
   root 'public#index'
 
+  get '/about', to: 'public#about', as: 'about'
+
   devise_for :users, 
     :path => "users",
     :path_names => { 
