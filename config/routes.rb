@@ -24,6 +24,7 @@ Collab::Application.routes.draw do
   get '/profiles/:id/edit', to: 'profiles#edit', as: 'edit_profile' 
   patch '/profiles/:id/update', to: 'profiles#update', as: 'update_profile'
   get '/profiles/:id', to: 'profiles#show', as: 'profile'
+  get '/home', to: 'profiles#index', as: 'user_home'
 
   # PROJECTS
   resources :projects

@@ -7,7 +7,7 @@ describe 'Project actions' do
   before(:each) do
     login_as(user, :scope => :user)
     user.projects << project
-    visit '/'
+    visit '/home'
   end
 
 

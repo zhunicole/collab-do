@@ -17,9 +17,8 @@
         /   %a{href: "contact.php"} Contact
         - if user_signed_in?    
           %li
-            %a{href: root_path} Home
+            %a{href: user_home_path} Home
 
-          
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
 
@@ -34,8 +33,7 @@
         - else
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-
-              = 'user'
+              = 'Sign up | Login'
               %b.caret
             %ul.dropdown-menu
               %li
