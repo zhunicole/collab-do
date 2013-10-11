@@ -13,7 +13,7 @@ describe 'Project actions' do
 
 	describe  "Creating new project" do
 		it 'lets the user create a new project' do
-			click_on 'Create new project'			
+			click_on 'Create project'			
 			expect(page).to have_text 'new project'
 			fill_in 'Name', :with => 'Learn to dance'
 			fill_in 'Description', :with => 'I need a dancing partner'
