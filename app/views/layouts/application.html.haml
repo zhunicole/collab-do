@@ -13,7 +13,6 @@
     / This section displays the 
     / .section=render 'asdf'
 
-
     %main{role: "main"}
       .container
         = render 'layouts/messages'
@@ -21,7 +20,9 @@
           %p.alert.alert-notice= notice
         - if alert
           %p.alert.alert-error= alert
-        = yield
+
+
+      = yield
 
     .container
       %hr
