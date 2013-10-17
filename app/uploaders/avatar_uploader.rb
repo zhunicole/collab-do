@@ -36,6 +36,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_fill => [100,100]
   end
+
   # def scale(width, height)
   #   # do something
   # end
