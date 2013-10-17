@@ -8,8 +8,33 @@
       - Project.active.each do |p|
         - if p.active? 
           .col-lg-4.col-md-4.col-sm-6
-            %a{href: project_path(p)}
-              %img.img-responsive.img-home-portfolio
-                .h4.text-center= p.name
-                =image_tag p.avatar.url
-                
+            .project_card.text-center
+              %a{href: project_path(p)}
+                .project_card_image=image_tag p.avatar.url
+                .h5= p.name 
+                .project_card_descrip
+                  by 
+                  =p.creator.name
+                .project_card_descrip
+                  =truncate(p.description, length: 100, separator: ' ')
+                .project_card_descrip
+                  %i.icon-map-marker= p.location
+
+                %table.project_card_stats
+                  %row  
+                    %td
+                      = p.active? ? 'active' : 'inactive'
+                      .div project
+                    %td
+                      =pluralize(p.users.count, ' member')
+                      .div collabing
+                    %td
+                      - hoursLeft = (p.end_time - DateTime.now)/60/60/30
+                      = '?';
+                      .div days left
+                    
+
+                    //todo need to refactor all of this!!
+
+
+
