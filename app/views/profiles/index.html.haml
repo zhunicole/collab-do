@@ -1,13 +1,6 @@
-/ USER's home page. (profiles / index )
-
-= link_to 'Create project', new_project_path
-.div
-  = link_to 'Explore projects', projects_path
-
-
 .row
   .col-lg-12
-    %h2.page-header Tabbed Services
+    %h2.page-header Projects
     %ul#myTab.nav.nav-tabs
       %li.active
         %a{"data-toggle" => "tab", href: "#service-one"} My Projects
@@ -23,6 +16,7 @@
           - @active_projects_by_user = Project.active.where(creator_id: current_user.id)
           - @active_projects_by_user.each do |p|
             %li.h4= link_to p.name, project_path(p)
+            /TODO %li= image_tag p.avatar.url
       #service-two.tab-pane.fade
         %i.icon-gears.pull-left.icon-4x
         %ul
@@ -35,5 +29,14 @@
         - @past_projects = current_user.projects.inactive
         - @past_projects.each do |p|
           %li.h4= link_to p.name, project_path(p)
+
+
+.div
+
+  .col-lg-4.col-md-4
+    %a.btn.btn-lg.btn-primary.pull-right{href: new_project_path} Create Project
+
+  .col-lg-4.col-md-4
+    %a.btn.btn-lg.btn-primary.pull-right{href: projects_path} Explore Projects
 
 / /.row
