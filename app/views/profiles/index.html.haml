@@ -1,3 +1,13 @@
+
+.section
+  .container
+    .row
+      .col-lg-4.col-md-4
+        %a.btn.btn-lg.btn-primary.pull-right{href: new_project_path} Create Project
+
+      .col-lg-4.col-md-4
+        %a.btn.btn-lg.btn-primary.pull-right{href: projects_path} Explore Projects
+
 .section
   .container
     .row
@@ -32,11 +42,4 @@
             - @past_projects.each do |p|
               %li.h4= link_to p.name, project_path(p)
 
-
-    .div
-      .col-lg-4.col-md-4
-        %a.btn.btn-lg.btn-primary.pull-right{href: new_project_path} Create Project
-
-      .col-lg-4.col-md-4
-        %a.btn.btn-lg.btn-primary.pull-right{href: projects_path} Explore Projects
 

@@ -1,45 +1,50 @@
-Editing project: 
-=@project.name
+.section
+	.container
+		.row
+			.col-lg-12
+
+				Editing project: 
+				=@project.name
 
 
-= simple_form_for @project do |f| 
-	= f.input :name, value: @project.name, required: true
-	= f.input :description, value: @project.description, required: true
-	= f.input :location, value: @project.name, required: true
+				= simple_form_for @project do |f| 
+					= f.input :name, value: @project.name, required: true
+					= f.input :description, value: @project.description, required: true
+					= f.input :location, value: @project.name, required: true
 
-	#datetimepicker.input-append.date
-		= f.input :start_time, value: @project.start_time,inline_label: true do
-			= f.input_field :start_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
-			%span.add-on
-				%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
-	#datetimepicker2.input-append.date
-		= f.input :end_time, value: @project.end_time, inline_label: true do
-			= f.input_field :end_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
-			%span.add-on
-				%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
-	.project_avatar
-		= image_tag @project.avatar.thumb.url if @project.avatar
-		= f.input :avatar, value: @project.avatar.thumb.url, required: false
+					#datetimepicker.input-append.date
+						= f.input :start_time, value: @project.start_time,inline_label: true do
+							= f.input_field :start_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
+							%span.add-on
+								%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+					#datetimepicker2.input-append.date
+						= f.input :end_time, value: @project.end_time, inline_label: true do
+							= f.input_field :end_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
+							%span.add-on
+								%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+					.project_avatar
+						= image_tag @project.avatar.thumb.url if @project.avatar
+						= f.input :avatar, value: @project.avatar.thumb.url, required: false
 
-	= f.submit 'Save'
+					= f.submit 'Save'
 
 
-%script{src: "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js", type: "text/javascript"}
-	:cdata
-%script{src: "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js", type: "text/javascript"}
-	:cdata
-%script{src: "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js", type: "text/javascript"}
-	:cdata
-%script{src: "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js", type: "text/javascript"}
-	:cdata
-:javascript
-	$('#datetimepicker').datetimepicker({
-		format: 'dd/MM/yyyy hh:mm:ss',
-		language: 'en'
-	});
-	$('#datetimepicker2').datetimepicker({
-		format: 'dd/MM/yyyy hh:mm:ss',
-		language: 'en'
-	});
+				%script{src: "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js", type: "text/javascript"}
+					:cdata
+				%script{src: "http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js", type: "text/javascript"}
+					:cdata
+				%script{src: "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js", type: "text/javascript"}
+					:cdata
+				%script{src: "http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js", type: "text/javascript"}
+					:cdata
+				:javascript
+					$('#datetimepicker').datetimepicker({
+						format: 'dd/MM/yyyy hh:mm:ss',
+						language: 'en'
+					});
+					$('#datetimepicker2').datetimepicker({
+						format: 'dd/MM/yyyy hh:mm:ss',
+						language: 'en'
+					});
 
 
