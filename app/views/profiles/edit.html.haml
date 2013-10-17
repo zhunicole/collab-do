@@ -1,19 +1,23 @@
-%h2 Edit Profile
+.section
+  .container
+    .row
+      .col-lg-12
+        %h2 Edit Profile
 
-= simple_form_for @user, url: update_profile_path(@user), method: 'patch' do |f|
-  = f.error_notification
-  .div 
-    .form-inputs
-      = f.input :first_name, value: @user.first_name
-      = f.input :last_name, value: @user.last_name
-      = f.input :location, value: @user.location, required: false
-      = f.input :blurb, value: @user.blurb, required: false
-      = image_tag @user.avatar.thumb.url if @user.avatar
-      = f.input :avatar, value: @user.avatar, required: false
-      = f.input :portfolio, value: @user.portfolio, required: false
-  .div
-    .form-actions
-      = f.button :submit, "Update"
+        = simple_form_for @user, url: update_profile_path(@user), method: 'patch' do |f|
+          = f.error_notification
+          .div 
+            .form-inputs
+              = f.input :first_name, value: @user.first_name
+              = f.input :last_name, value: @user.last_name
+              = f.input :location, value: @user.location, required: false
+              = f.input :blurb, value: @user.blurb, required: false
+              = image_tag @user.avatar.thumb.url if @user.avatar
+              = f.input :avatar, value: @user.avatar, required: false
+              = f.input :portfolio, value: @user.portfolio, required: false
+          .div
+            .form-actions
+              = f.button :submit, "Update"
 
 
 

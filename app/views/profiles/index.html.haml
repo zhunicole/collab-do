@@ -1,42 +1,42 @@
-.row
-  .col-lg-12
-    %h2.page-header Projects
-    %ul#myTab.nav.nav-tabs
-      %li.active
-        %a{"data-toggle" => "tab", href: "#service-one"} My Projects
-      %li
-        %a{"data-toggle" => "tab", href: "#service-two"} My Collabs
-      %li
-        %a{"data-toggle" => "tab", href: "#service-three"} My Past Projects
+.section
+  .container
+    .row
+      .col-lg-12
+        %h2.page-header Projects
+        %ul#myTab.nav.nav-tabs
+          %li.active
+            %a{"data-toggle" => "tab", href: "#service-one"} My Projects
+          %li
+            %a{"data-toggle" => "tab", href: "#service-two"} My Collabs
+          %li
+            %a{"data-toggle" => "tab", href: "#service-three"} My Past Projects
 
-    #myTabContent.tab-content
-      #service-one.tab-pane.fade.in.active
-        %i.icon-gear.pull-left.icon-4x
-        %ul
-          - @active_projects_by_user = Project.active.where(creator_id: current_user.id)
-          - @active_projects_by_user.each do |p|
-            %li.h4= link_to p.name, project_path(p)
-            /TODO %li= image_tag p.avatar.url
-      #service-two.tab-pane.fade
-        %i.icon-gears.pull-left.icon-4x
-        %ul
-          - @collabed = current_user.projects.active - @active_projects_by_user
-          - @collabed.each do |p|
-            %li.h4= link_to p.name, project_path(p)
-      #service-three.tab-pane.fade
-        %i.icon-magic.pull-left.icon-4x
-        %ul
-        - @past_projects = current_user.projects.inactive
-        - @past_projects.each do |p|
-          %li.h4= link_to p.name, project_path(p)
+        #myTabContent.tab-content
+          #service-one.tab-pane.fade.in.active
+            / %i.icon-gear.pull-left.icon-4x
+            %ul
+              - @active_projects_by_user = Project.active.where(creator_id: current_user.id)
+              - @active_projects_by_user.each do |p|
+                %li.h4= link_to p.name, project_path(p)
+                /TODO %li= image_tag p.avatar.url
+          #service-two.tab-pane.fade
+            / %i.icon-gears.pull-left.icon-4x
+            %ul
+              - @collabed = current_user.projects.active - @active_projects_by_user
+              - @collabed.each do |p|
+                %li.h4= link_to p.name, project_path(p)
+          #service-three.tab-pane.fade
+            / %i.icon-magic.pull-left.icon-4x
+            %ul
+            - @past_projects = current_user.projects.inactive
+            - @past_projects.each do |p|
+              %li.h4= link_to p.name, project_path(p)
 
 
-.div
+    .div
+      .col-lg-4.col-md-4
+        %a.btn.btn-lg.btn-primary.pull-right{href: new_project_path} Create Project
 
-  .col-lg-4.col-md-4
-    %a.btn.btn-lg.btn-primary.pull-right{href: new_project_path} Create Project
+      .col-lg-4.col-md-4
+        %a.btn.btn-lg.btn-primary.pull-right{href: projects_path} Explore Projects
 
-  .col-lg-4.col-md-4
-    %a.btn.btn-lg.btn-primary.pull-right{href: projects_path} Explore Projects
-
-/ /.row
