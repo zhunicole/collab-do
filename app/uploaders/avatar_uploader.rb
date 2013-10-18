@@ -33,9 +33,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #
   process :resize_to_fit => [500, 500]
 
-  version :card_size do
-    process :resize_to_fill => [250, 300]
-  end
 
   version :thumb do
     process :resize_to_fill => [100,100]

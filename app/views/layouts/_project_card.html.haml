@@ -1,3 +1,29 @@
-wlkjefkwefo
-@#$##@#@#$@#
-//todo fix this!
+.project_card.text-center
+  %a{href: project_path(p)}
+    .project_card_image=image_tag p.avatar.url
+    .h5= p.name 
+    .project_card_descrip
+      by 
+      =p.creator.name
+    .project_card_descrip
+      =truncate(p.description, length: 100, separator: ' ')
+    .project_card_descrip
+      %i.icon-map-marker= p.location
+
+    %table.project_card_stats
+      %row  
+        %td
+          = p.active? ? 'active' : 'inactive'
+          .div project
+        %td
+          =pluralize(p.users.count, ' member')
+          .div collabing
+        %td
+          - hoursLeft = (p.end_time - DateTime.now)/60/60/30
+          = '?';
+          .div days left
+        
+
+
+
+

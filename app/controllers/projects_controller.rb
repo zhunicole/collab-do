@@ -75,6 +75,8 @@ class ProjectsController < ApplicationController
 		end
 	end
 
+
+
 	def project_params
 		params.require(:project).permit(:name, :description, :creator_id,
 			:location, :start_time, :end_time, :avatar)
