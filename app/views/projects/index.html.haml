@@ -7,29 +7,4 @@
 
 				- @open_projects.each do |p|
 					.col-lg-4.col-md-4.col-sm-6
-						.project_card
-							%a{href: project_path(p)}
-								.project_card_image=image_tag p.avatar.url
-								.h5= p.name	
-								.project_card_descrip
-									by 
-									=p.creator.name
-								.project_card_descrip
-									=truncate(p.description, length: 100, separator: ' ')
-								.project_card_descrip
-									%i.icon-map-marker= p.location
-
-								%table.project_card_stats
-									%row	
-										%td
-											active
-											status
-										%td
-											5 members
-											collabing
-										%td
-											- hoursLeft = (p.end_time - DateTime.now)/60/60/30
-											= '5';
-											days left
-							wlkfkwej			
-aliwefoaiw eplw
+						= render partial: 'layouts/project_card', locals: {p: p}
