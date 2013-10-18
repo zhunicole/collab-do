@@ -57,6 +57,10 @@
 	color: #eeeeee
 }
 
+.outline_green {
+	color: #bbd19b
+}
+
 .project_card {
 	border-style: solid;
 	border-color: #eeeeee;
@@ -64,7 +68,7 @@
 }
 
 .project_card:hover {
-	border-color: #8FB359
+	border-color: #bbd19b
 }
 
 
@@ -84,4 +88,10 @@
 	width: 100%;
 	color: #0b1902;
 	overflow: hidden;
+}
+
+.footer {
+	background-color: #192B33;
+	color: #7e7e7e;
+
 }

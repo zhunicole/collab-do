@@ -2,7 +2,8 @@ class AdminController < ApplicationController
 	before_action :authenticate_user!   
 	before_action do
 		if !current_user.admin then
-			redirect_to new_user_session_path 
+			flash[:notice] = 'You are not an administrator'
+			redirect_to '/home'
 		end
 	end
 
