@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe AdminController do
+pending AdminController do
 
 end
