@@ -18,7 +18,6 @@ class AdminController < ApplicationController
 		Project.where(creator_id: @user.id).destroy_all
 		User.destroy(@user)
 		# todo send deleted user an email notif
-
 		redirect_to '/admin'
 	end
 
