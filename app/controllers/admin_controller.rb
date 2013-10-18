@@ -49,6 +49,10 @@ class AdminController < ApplicationController
 	end
 
 	def remove_project
+		@project = Project.find(params[:id])
+		Project.destroy(@project)
+		# todo check if this affects User.projects
+		redirect_to '/admin'
 	end
 
 	def feature_project

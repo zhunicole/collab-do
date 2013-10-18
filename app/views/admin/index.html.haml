@@ -15,3 +15,11 @@
 							- else
 								%td= link_to 'Make Admin', make_admin_path(u), method: :patch
 				%h3 Projects
+				%table.table
+					- @projects.each do |p|
+						%tr
+							%td= link_to p.name, project_path(p)
+							%td= link_to "Delete Project", remove_project_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete
+							%td Approve
+							%td Feature
+

@@ -31,7 +31,6 @@ Collab::Application.routes.draw do
   get 'projects/:id/collab', to: 'projects#collab', as: 'collab_project'  
   get 'projects/:id/quit', to: 'projects#quit', as: 'quit_project'  
   # get '/projects', to: 'projects#index', as: 'projects'
-
   # PAGE ERRORS
   get "/404", :to => "errors#not_found", as: 'not_found'
   get "/422", :to => "errors#unacceptable", as: 'unacceptable'
@@ -40,8 +39,9 @@ Collab::Application.routes.draw do
 
   # ADMIN
   get '/admin', to: 'admin#index', as: 'admin'
-  delete '/admin/:id/remove', to: 'admin#remove_user', as: 'remove_user'
+  delete '/admin/:id/remove_user', to: 'admin#remove_user', as: 'remove_user'
   patch '/admin/:id', to: 'admin#make_admin', as: 'make_admin'
+  delete '/admin/:id/remove_project', to: 'admin#remove_project', as: 'remove_project'
 
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
   # post /users  (create) 
