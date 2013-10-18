@@ -11,3 +11,10 @@ class AddAdminToUsers < ActiveRecord::Migration
   	remove_column :users, :admin 
   end
 end
+
+
+# if current_user.admin?
+	# if no curr user , then do: current_user.try?(:admin?)
+
+# granting admin status
+	# current_user.update_attribute :admin, true

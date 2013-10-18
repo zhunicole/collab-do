@@ -37,6 +37,11 @@ Collab::Application.routes.draw do
   get "/422", :to => "errors#unacceptable", as: 'unacceptable'
   get "/500", :to => "errors#internal_error", as: 'internal_error'
 
+
+  # ADMIN
+  get '/admin', to: 'admin#index', as: 'admin'
+  delete '/admin/:id/remove', to: 'admin#remove_user', as: 'remove_user'
+
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
   # post /users  (create) 
   # patch /users  (update)
