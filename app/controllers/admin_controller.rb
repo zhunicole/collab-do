@@ -34,8 +34,13 @@ class AdminController < ApplicationController
 
 	end
 
-	def make_admin(user)
-		user.update_attributes(admin: true)
+	def make_admin
+		@user = User.find(params[:id])
+		if @user.update_attribute(:admin, true)
+			redirect_to '/admin'
+		else 
+			render params[:id]
+		end
 	end
 
 	# PROJECT

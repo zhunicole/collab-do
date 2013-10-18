@@ -41,6 +41,7 @@ Collab::Application.routes.draw do
   # ADMIN
   get '/admin', to: 'admin#index', as: 'admin'
   delete '/admin/:id/remove', to: 'admin#remove_user', as: 'remove_user'
+  patch '/admin/:id', to: 'admin#make_admin', as: 'make_admin'
 
   # get /users/new (new)  /users/edit (edit) /users  (index)  /users/1  (show)
   # post /users  (create) 

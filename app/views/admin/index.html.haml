@@ -5,9 +5,13 @@
 				%h2 Admin Controls
 				%hr/
 				%h3 Users
-				%table
+				%table.table
 					- @users.each do |u|
 						%tr
 							%td= link_to u.name, profile_path(u)
 							%td= link_to "Delete User Account", remove_user_path(u), :data => { :confirm => "Deleting this user removes his projects. Are you sure?" }, :method => :delete
+							-if u.admin
+								%td.green Admin
+							- else
+								%td= link_to 'Make Admin', make_admin_path(u), method: :patch
 				%h3 Projects
