@@ -41,7 +41,7 @@
 							- @unapproved_projects.each do |p|
 								%tr
 									%td= link_to p.name, project_path(p)
-									%td= link_to "Approve", action: 'approve_project', id: p.id
+									%td= link_to "Approve", approve_project_path(p)
 						%h4= 'Projects' if @approved_projects.size > 0
 						%table.table
 							- @approved_projects.each do |p|

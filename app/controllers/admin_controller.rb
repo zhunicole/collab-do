@@ -12,7 +12,7 @@ class AdminController < ApplicationController
   	@unapproved_users = User.find_all_by_approved(false)
 		@unapproved_projects = Project.find_all_by_approved(false)
 		@approved_users = User.order("first_name ASC, id ASC") - @unapproved_users
-		@approved_projects = Project.order("created_at DESC, id ASC")	- @unapproved_users
+		@approved_projects = Project.order("created_at DESC, id ASC")	- @unapproved_projects
 	end
 
 	# USER
@@ -65,7 +65,8 @@ class AdminController < ApplicationController
 	def approve_project
 		@project = Project.find(params[:id])
 		@project.update_attribute(:approved, true)
-		redirect_to '/admin'
+		redirect_to :back
+		#TODO: set servicetwo pane to active
 
 	end
 

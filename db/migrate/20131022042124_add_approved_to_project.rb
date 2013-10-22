@@ -5,7 +5,7 @@ class AddApprovedToProject < ActiveRecord::Migration
   end
 
   def change
-    add_column :projects, :approved, :boolean, default: true
+    add_column :projects, :approved, :boolean, default: false
   end
 
 

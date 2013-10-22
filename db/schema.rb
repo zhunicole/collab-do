@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20131022042124) do
     t.datetime "end_time"
     t.string   "avatar"
     t.boolean  "featured",    default: false
-    t.boolean  "approved",    default: true
+    t.boolean  "approved",    default: false
   end
 
   create_table "projects_users", id: false, force: true do |t|

@@ -43,11 +43,11 @@ Collab::Application.routes.draw do
   delete '/admin/:id/remove_user', to: 'admin#remove_user', as: 'remove_user'
   patch '/admin/:id', to: 'admin#make_admin', as: 'make_admin'
   get '/admin/:id/toggle_feature_user', to: 'admin#toggle_feature_user', as: 'toggle_feature_user'
-  get '/admin/id', to: 'admin#approve_user', as: 'approve_user'
+  get '/admin/id/approve_user', to: 'admin#approve_user', as: 'approve_user'
   # admin projects
   delete '/admin/:id/remove_project', to: 'admin#remove_project', as: 'remove_project'
   get '/admin/:id/toggle_feature_project', to: 'admin#toggle_feature_project', as: 'toggle_feature_project'
-  get '/admin/id', to: 'admin#approve_project', as: 'approve_project'
+  get '/admin/:id/approve_project', to: 'admin#approve_project', as: 'approve_project'
 
 
 

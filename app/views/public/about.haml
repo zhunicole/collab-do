@@ -88,7 +88,7 @@
         -if u.avatar.url
           %img.img-responsive.img-customer
 
-          = image_tag u.avatar.url
+          = image_tag u.avatar.thumb.url
         -else 
           %img.img-responsive.img-customer{src: "images/600full.jpg"}/
         =u.name
