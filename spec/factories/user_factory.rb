@@ -10,5 +10,6 @@ FactoryGirl.define do
     password_confirmation  "12345678"
     admin false
     featured false
+    approved true
   end
 end

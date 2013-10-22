@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022032851) do
+ActiveRecord::Schema.define(version: 20131022042124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20131022032851) do
     t.datetime "end_time"
     t.string   "avatar"
     t.boolean  "featured",    default: false
+    t.boolean  "approved",    default: true
   end
 
   create_table "projects_users", id: false, force: true do |t|
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20131022032851) do
     t.text     "portfolio"
     t.boolean  "admin",                  default: false
     t.boolean  "featured",               default: false
+    t.boolean  "approved",               default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -4,29 +4,53 @@
 			.col-lg-12
 				%h2 Admin Controls
 				%hr/
-				%h3 Users
-				%table.table
-					- @users.each do |u|
-						%tr
-							%td= link_to u.name, profile_path(u)
-							%td= link_to "Delete User Account", remove_user_path(u), :data => { :confirm => "Deleting this user removes his projects. Are you sure?" }, :method => :delete
-							-if u.admin
-								%td.green Admin
-							- else
-								%td= link_to 'Make Admin', make_admin_path(u), method: :patch
-							-if u.featured
-								%td= link_to 'Featured', toggle_feature_user_path(u), class: 'green'
-							-else 
-								%td= link_to 'Feature', toggle_feature_user_path(u)
-				%h3 Projects
-				%table.table
-					- @projects.each do |p|
-						%tr
-							%td= link_to p.name, project_path(p)
-							%td= link_to "Delete Project", remove_project_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete
-							%td Approve
-							-if p.featured
-								%td= link_to 'Featured', toggle_feature_project_path(p), class: 'green'
-							-else 
-								%td= link_to 'Feature', toggle_feature_project_path(p)
 
+				%ul#myTab.nav.nav-tabs
+					%li.active
+						%a{"data-toggle" => "tab", href: "#service-one"} Manage Users
+					%li
+						%a{"data-toggle" => "tab", href: "#service-two"} Manage Projects
+
+				#myTabContent.tab-content
+					#service-one.tab-pane.fade.in.active
+						%h4= 'User Approvals' if @unapproved_users.size > 0
+						%table
+							- @unapproved_users.each do |u|
+								%tr
+									%td= u.email
+									%td= link_to "Approve", action: 'approve_user', id: u.id
+						
+						%table.table
+							%h4 Users
+							- @approved_users.each do |u|
+								%tr
+									%td= link_to u.name, profile_path(u)
+									%td= link_to "Delete User", remove_user_path(u), :data => { :confirm => "Deleting this user removes his projects. Are you sure?" }, :method => :delete
+									-if u.admin
+										%td.green Admin
+									- else
+										%td= link_to 'Make Admin', make_admin_path(u), method: :patch
+									-if u.featured
+										%td= link_to 'Featured', toggle_feature_user_path(u), class: 'green'
+									-else 
+										%td= link_to 'Feature', toggle_feature_user_path(u)
+
+					#service-two.tab-pane.fade
+						%h4= 'Project Approvals' if @unapproved_projects.size > 0
+						%table
+							- @unapproved_projects.each do |p|
+								%tr
+									%td= link_to p.name, project_path(p)
+									%td= link_to "Approve", action: 'approve_project', id: p.id
+						%h4= 'Projects' if @approved_projects.size > 0
+						%table.table
+							- @approved_projects.each do |p|
+								%tr
+									%td= link_to p.name, project_path(p)
+									%td= link_to "Delete Project", remove_project_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete
+									-if p.featured
+										%td= link_to 'Featured', toggle_feature_project_path(p), class: 'green'
+									-else 
+										%td= link_to 'Feature', toggle_feature_project_path(p)
+
+						

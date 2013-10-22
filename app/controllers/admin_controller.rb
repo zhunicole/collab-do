@@ -8,8 +8,11 @@ class AdminController < ApplicationController
 	# end
 
 	def index
-		@users = User.order("first_name ASC, id ASC") 
-		@projects = Project.order("created_at DESC, id ASC")
+		
+  	@unapproved_users = User.find_all_by_approved(false)
+		@unapproved_projects = Project.find_all_by_approved(false)
+		@approved_users = User.order("first_name ASC, id ASC") - @unapproved_users
+		@approved_projects = Project.order("created_at DESC, id ASC")	- @unapproved_users
 	end
 
 	# USER
@@ -27,6 +30,13 @@ class AdminController < ApplicationController
 	end
 
 	def unblock_user
+
+	end
+
+	def approve_user
+		@user = User.find(params[:id])
+		@user.update_attribute(:approved, true)
+		redirect_to '/admin'
 
 	end
 
@@ -51,7 +61,12 @@ class AdminController < ApplicationController
 
 	# PROJECT
 
+	
 	def approve_project
+		@project = Project.find(params[:id])
+		@project.update_attribute(:approved, true)
+		redirect_to '/admin'
+
 	end
 
 	def remove_project
