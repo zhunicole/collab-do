@@ -16,6 +16,7 @@ class Project < ActiveRecord::Base
 	scope :inactive, lambda { where('end_time < ?', DateTime.now )}
 
 	scope :active, lambda { where('end_time >= ?', DateTime.now) }
+  scope :featured, lambda { where('featured')}
 
 
 	def valid_times

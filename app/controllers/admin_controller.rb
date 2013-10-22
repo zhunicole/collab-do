@@ -1,15 +1,15 @@
 class AdminController < ApplicationController
-	before_action :authenticate_user!   
-	before_action do
-		if !current_user.admin then
-			flash[:notice] = 'You are not an administrator'
-			redirect_to '/home'
-		end
-	end
+	# before_action :authenticate_user!   
+	# before_action do
+	# 	if !current_user.admin then
+	# 		flash[:notice] = 'You are not an administrator'
+	# 		redirect_to '/home'
+	# 	end
+	# end
 
 	def index
-		@users = User.all conditions: (current_user ? ["id != ?", current_user.id] : [])
-		@projects = Project.all
+		@users = User.order("first_name ASC, id ASC") 
+		@projects = Project.order("created_at DESC, id ASC")
 	end
 
 	# USER
@@ -30,8 +30,14 @@ class AdminController < ApplicationController
 
 	end
 
-	def feature_user
-
+	def toggle_feature_user
+		@user = User.find(params[:id])
+		if @user.featured
+			@user.update_attribute(:featured, false)
+		else
+			@user.update_attribute(:featured, true)
+		end
+		redirect_to '/admin'
 	end
 
 	def make_admin
@@ -51,11 +57,17 @@ class AdminController < ApplicationController
 	def remove_project
 		@project = Project.find(params[:id])
 		Project.destroy(@project)
-		# todo check if this affects User.projects
 		redirect_to '/admin'
 	end
 
-	def feature_project
+	def toggle_feature_project
+		@project = Project.find(params[:id])
+		if @project.featured
+			@project.update_attribute(:featured, false)
+		else
+			@project.update_attribute(:featured, true)
+		end
+		redirect_to '/admin'
 	end
 
 end

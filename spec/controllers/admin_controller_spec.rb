@@ -1,79 +1,64 @@
 require 'spec_helper'
 
 describe AdminController do
-	# let!(:user) { FactoryGirl.create(:user) }
-	# before(:each) do
-	# 	sign_in user
-	# end
+	let!(:admin) { FactoryGirl.create(:admin) }
+	let!(:user) { FactoryGirl.create(:user) }
+	let!(:project) {FactoryGirl.create(:project, creator_id: user.id)}
+	
+	before(:each) do
+		sign_in admin
+	end
 
 	
-	# describe "POST create" do
-	# 	let(:do_request) { post :create, project: FactoryGirl.attributes_for(:project, creator_id: user.id) }		
+	describe "#remove_user" do
+		let(:do_request) {delete :remove_user, id: user.id }		
+
+		describe "deletes user account" do
+			it "removes the user from db" do
+				expect(User.count).to eq(2)
+				do_request
+				expect(User.count).to eq(1)
+			end
+
+			it 'removes his projects' do
+				expect(Project.count).to eq(1)
+				do_request
+				expect(Project.count).to eq(0)
+			end
+		end
 		
-	# 	describe "creates new project" do
-	# 		it "saves to db" do
-	# 			expect(Project.count).to eq(0)
-	# 			do_request
-	# 			expect(Project.count).to eq(1)
-	# 			expect(Project.first.name).to eq('Project title')
-	# 		end
+	end
 
-	# 		it ' now has user as collaborator' do
-	# 			do_request
-	# 			expect(user.projects.length).to eq 1
-	# 		end
-	# 	end
-		
-	# end
+	describe "#toggle_feature_user" do
+		let(:do_request) {patch :toggle_feature_user, id: user.id}
 
-	# describe "PUT update" do
+		it 'toggles user feature attr to true and false' do
+			expect(User.featured.count).to eq(0)
+			do_request
+			expect(User.featured.count).to eq(1) 
+		end
+	end
 
-	# 	describe "PUT 'update/:id'" do
-	# 		before do 
-	# 			@project = FactoryGirl.create(:project)
-	# 		end
 
-	# 	  it "allows a project to be updated" do
-	# 	    @attr = { :name => "new name", :description => "new description" }
-	# 	    put :update, :id => @project.id, :project => @attr
-	# 	    @project.reload
-	# 	    @project.name.should == @attr[:name]
-	# 	    @project.description.should == @attr[:description] 
-	# 	  end
+	describe "#toggle_feature_project" do
+		let(:do_request) {patch :toggle_feature_project, id: project.id}
 
-	# 	  it "only allows for updates only when active" do
-	# 		end
+		it 'toggles project feature attr to true and false' do
+			expect(Project.featured.count).to eq(0)
+			do_request
+			expect(Project.featured.count).to eq(1) 
+		end
+	end
 
-	# 	end
-	# end
 
-	# describe '#collab' do
-	# 	# has user already
-	# 	let(:project) { FactoryGirl.create(:project, id: user.id) }
-	# 	let(:do_request) { get :collab, id: project.id }		
+	pending "#block_user" do
 
-	# 	it 'lets user join (collaborate) on a project' do
-	# 		expect(project.users.length).to eq 0
-	# 		do_request
-	# 		project.reload
-	# 		expect(project.users.length).to eq 1
-	# 	end
 
-	# 	it 'doesnt let user collab >1 time' do
-	# 		expect(project.users.length).to eq 0
-	# 		do_request
-	# 		project.reload
-	# 		expect(project.users.length).to eq 1
-	# 		do_request
-	# 		project.reload
-	# 		expect(project.users.length).to eq 1
-	# 	end
+	end
 
-	# 	it "only allows for updates only when active" do
-	# 		# same for delete
-
-	# 	end
-	# end
+	pending '#remove_user' do
+	
+	end
 
 	# describe 'Actions when project is not active' do
 	# 	let(:project) { 

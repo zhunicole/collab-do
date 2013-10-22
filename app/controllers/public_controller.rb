@@ -5,7 +5,7 @@ class PublicController < ApplicationController
 	end
 
 	def about
-
+		@featured_users = User.featured
 	end
 
 end

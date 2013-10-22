@@ -4,8 +4,6 @@
       .col-lg-12.text-left
         %h4.green Featured Projects
         %hr/
-        /TODO: eventually these need to be featured projects
-      - Project.active.each do |p|
-        - if p.active? 
-          .col-lg-3.col-md-3.col-sm-3
-            =render partial: 'layouts/project_card', locals: {p: p}
+      - Project.featured.active.each do |p|
+        .col-lg-3.col-md-3.col-sm-3
+          =render partial: 'layouts/project_card', locals: {p: p}

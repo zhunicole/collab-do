@@ -14,6 +14,10 @@
 								%td.green Admin
 							- else
 								%td= link_to 'Make Admin', make_admin_path(u), method: :patch
+							-if u.featured
+								%td= link_to 'Featured', toggle_feature_user_path(u), class: 'green'
+							-else 
+								%td= link_to 'Feature', toggle_feature_user_path(u)
 				%h3 Projects
 				%table.table
 					- @projects.each do |p|
@@ -21,5 +25,8 @@
 							%td= link_to p.name, project_path(p)
 							%td= link_to "Delete Project", remove_project_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete
 							%td Approve
-							%td Feature
+							-if p.featured
+								%td= link_to 'Featured', toggle_feature_project_path(p), class: 'green'
+							-else 
+								%td= link_to 'Feature', toggle_feature_project_path(p)
 

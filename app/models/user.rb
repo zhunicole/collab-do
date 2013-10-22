@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   validates :location, presence: true, on: :update
 
 
+  scope :featured, lambda { where('featured')}
+
   def name
     if first_name and last_name then
     	first_name + ' ' + last_name
@@ -21,6 +23,7 @@ class User < ActiveRecord::Base
       'User Name'
     end
   end
+
 
 end
 
