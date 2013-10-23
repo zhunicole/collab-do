@@ -11,8 +11,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -31,13 +31,26 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
-  process :resize_to_fit => [500, 500]
+  # process :resize_to_fit => [500, 500]
 
 
-  version :thumb do
-    process :resize_to_fill => [100,100]
-  end
+  # version :thumb do
+  #   process :resize_to_fill => [100,100]
+  # end
 
+
+ 
+  # version :print do
+  #   version :thumb    do process :resize_to_fit => [32, 32] end
+  #   version :preview  do process :resize_to_fit => [256, 256] end
+  #   version :full     do process :resize_to_fit => [2048, 20s48] end
+  # end
+ 
+  # version :web do
+    version :thumb    do process :resize_to_fit => [32, 32] end
+    version :preview  do process :resize_to_fit => [128, 128] end
+    version :full     do process :resize_to_fit => [1024, 768] end
+  # end
   # def scale(width, height)
   #   # do something
   # end

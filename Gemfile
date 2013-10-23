@@ -36,6 +36,7 @@ gem 'devise'
 # image uploading gems
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog', '~> 1.3.1'
 
 
 gem 'haml'
