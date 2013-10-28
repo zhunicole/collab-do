@@ -49,6 +49,8 @@ gem 'binding_of_caller'
 
 gem "factory_girl_rails", "~> 4.0"
 
+gem 'validates_email_format_of'
+
 gem 'bcrypt-ruby', '3.0.1'
 
 group :development do

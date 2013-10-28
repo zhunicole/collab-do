@@ -11,7 +11,7 @@ describe 'Project actions' do
   end
 
 
-	describe  "Creating new project" do
+	pending  "Creating new project" do
 		it 'lets the user create a new project' do
 			click_on 'Create Project'			
 			expect(page).to have_text 'new project'
@@ -27,7 +27,7 @@ describe 'Project actions' do
   end
 
 
-  describe "Viewing an existing project" do
+  pending "Viewing an existing project" do
   	context 'for public and user' do
   		it 'shows project details' do
   			click_on project.name
@@ -36,7 +36,7 @@ describe 'Project actions' do
   	end
   end
 
-  describe "Editing an existing project" do
+  pending "Editing an existing project" do
   	let(:unauthoUser) { FactoryGirl.create(:user, :email => 'z@z.com') }
    
     before(:each) do
@@ -65,7 +65,7 @@ describe 'Project actions' do
     end
   end
 
-  describe "Deleting an existing project" do
+  pending "Deleting an existing project" do
     before(:each) do
       click_on project.name
       click_on 'Delete project'
@@ -75,7 +75,7 @@ describe 'Project actions' do
     end
   end
 
-  describe "Collabing on projects" do
+  pending "Collabing on projects" do
     let!(:otherUser) { FactoryGirl.create(:user, email: 'a@a.com') }
     let!(:otherProject) { FactoryGirl.create(:project, id: 20, creator_id: otherUser.id) }
 

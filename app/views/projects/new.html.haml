@@ -3,12 +3,19 @@
 		.row
 			.col-lg-12
 
-				Create new project
+				= @title
 
 				= simple_form_for @project do |f| 
 					= f.input :name, required: true
 					= f.input :description, required: true
 					= f.input :location, required: true
+
+					= f.input :difficulty, required: true
+					= f.input :seeking, required: true
+					= f.input :stage, required: true
+
+					= f.input :project_email, required: true
+
 					#datetimepicker.input-append.date
 						= f.input :start_time, value: DateTime.now, inline_label: true, required: true do
 							= f.input_field :start_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
@@ -22,6 +29,10 @@
 					= f.input :avatar, required: true
 
 					= f.submit 'Create project'
+
+
+
+
 
 
 				%script{src: "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js", type: "text/javascript"}

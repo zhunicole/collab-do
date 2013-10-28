@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20131028054635) do
     t.text     "seeking"
     t.integer  "stage"
     t.integer  "num_interested"
+    t.string   "project_email"
   end
 
   create_table "projects_users", id: false, force: true do |t|

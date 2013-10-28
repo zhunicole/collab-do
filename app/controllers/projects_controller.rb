@@ -8,15 +8,16 @@ class ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new
-		@title = 'Create project'
+		@title = 'New project'
 	end
 
 	def create
-		@project = Project.new(project_params.merge(creator_id: current_user.id))		
-
+		# @project = Project.new(project_params.merge(creator_id: current_user.id))		
+		@project = Project.new(project_params.merge(creator_id: 0))		
 		if @project.save then 
-			current_user.projects << @project
-			redirect_to project_path(@project.id)
+			redirect_to root_path
+			# current_user.projects << @project
+			# redirect_to project_path(@project.id)
 		else
 			render 'new'
 		end
@@ -24,9 +25,11 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@project = Project.find params[:id]
-		@title = 'Show Project'
-		@collabers = @project.users
+
+		redirect_to root_path
+		# @project = Project.find params[:id]
+		# @title = 'Show Project'
+		# @collabers = @project.users
 	end
 
 	def edit
@@ -79,6 +82,7 @@ class ProjectsController < ApplicationController
 
 	def project_params
 		params.require(:project).permit(:name, :description, :creator_id,
-			:location, :start_time, :end_time, :avatar)
+			:location, :start_time, :end_time, :avatar, :difficulty, :seeking,
+			:stage, :num_interested, :project_email)
 	end
 end
