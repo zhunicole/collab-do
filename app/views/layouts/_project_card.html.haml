@@ -1,17 +1,23 @@
 .project_card.text-center
   %a{href: project_path(p)}
     .project_card_image=image_tag p.avatar.url
-    .h5= p.name 
+    %h4.green= p.name 
+    / .project_card_descrip
+    /   by 
+    /   =p.creator.name
     .project_card_descrip
-      by 
-      =p.creator.name
-    .project_card_descrip
-      =truncate(p.description, length: 100, separator: ' ')
+      =truncate(p.description, length: 90, separator: ' ')
     .project_card_descrip
       %i.icon-map-marker= ' ' + p.location
 
+    .project_card_descrip
+      I am looking for: 
+      People with knowledge of manufacturing
+
     %table.project_card_stats
       %row  
+        Just an idea
+      %row
         %td
           = p.active? ? 'active' : 'inactive'
           .text_gray status
@@ -23,7 +29,10 @@
         %td
           - hoursLeft = (p.end_time - DateTime.now)/60/60/30
           = distance_of_time_in_words(DateTime.now, p.end_time)
-          .text_gray remaining
+          .text_gray left
+
+    .project_card_descrip
+      contact
         
 
 
