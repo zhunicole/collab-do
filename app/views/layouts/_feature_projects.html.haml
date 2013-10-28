@@ -2,8 +2,8 @@
   .container
     .row
       .col-lg-12.text-left
-        %h4.green Featured Projects
+        / %h4.green Featured Projects
         %hr/
       - Project.featured.active.each do |p|
-        .col-lg-3.col-md-3.col-sm-3
+        .col-lg-4.col-md-4.col-sm-4
           =render partial: 'layouts/project_card', locals: {p: p}
