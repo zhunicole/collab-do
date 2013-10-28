@@ -1,4 +1,4 @@
-.project_card.text-center
+.project_card
   %a{href: project_path(p)}
     .project_card_image=image_tag p.avatar.url
 
@@ -7,42 +7,48 @@
       %h4.green= p.name 
       .project_card_overlay= 'Difficulty: ' + p.difficulty
 
-    / .project_card_descrip
-    /   by 
-    /   =p.creator.name
     .project_card_descrip
       =p.description
+
+    .project_card_descrip.text-center
+      %i.icon-map-marker.green= ' ' + p.location
+
+    %hr.flat
+      
     .project_card_descrip
-      %i.icon-map-marker= ' ' + p.location
+      .green I'm looking for:
+      = p.seeking
+
+
+    %hr.flat
+
+
 
     .project_card_descrip
-      =p.seeking
-
-    .project_card_descrip
-      =p.difficulty
-
-    .project_card_descrip
-      =p.stage
+      .green Project stage:
+      .progress
+        - if p.stage = 'Just an idea'
+          .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width: 33%"}
+            = p.stage
+        - elsif p.stage = 'Pretty certain'  
+          .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width: 66%"}
+            = p.stage
+        - else
+          .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width: 100%"}
+            = p.stage
 
     %table.project_card_stats
-      %row  
-        Just an idea
       %row
         %td
-          = p.active? ? 'active' : 'inactive'
-          .text_gray status
-          /todo: turn into a progress bar
-        %td
-          - member_str = pluralize(p.users.count, ' collaber').split(' ')
-          = p.users.count
-          .text_gray= member_str[1]
+          .project_card_counter= p.num_interested ? p.num_interested : '< 5'
+          .text_gray interested
         %td
           - hoursLeft = (p.end_time - DateTime.now)/60/60/30
-          = distance_of_time_in_words(DateTime.now, p.end_time)
+          .project_card_counter= distance_of_time_in_words(DateTime.now, p.end_time)
           .text_gray left
 
-    .project_card_descrip
-      contact
+    .project_card_contact
+      CONTACT
         
 
 

@@ -118,10 +118,10 @@
 
 .project_card_name {
 	position: relative;
+	padding-left: 10px;
 }
 
 .project_card_overlay {
-
 	position:absolute;
     left:0;
     right:0;
@@ -131,11 +131,23 @@
     background-color:rgba(0,0,0,0.2);
     z-index:9999;
     color:white;
+    padding-left: 10px;
 }
 
 .project_card_descrip {
 	color: #7e7e7e;
-	padding-bottom: 10px;
+	padding: 10px;
+	padding-top: 0;
+}
+
+.project_card_counter {
+	text-align: center;
+	color: #8FB359;
+	font-size: 20px;
+}
+
+.project_card_seeking {
+	color: #8FB359;
 }
 
 .project_card_stats {
@@ -143,6 +155,17 @@
 	width: 100%;
 	color: #0b1902;
 	overflow: hidden;
+	text-align: center;
+
+}
+
+.project_card_contact {
+	background-color: #FF8000;
+	color: white;
+	padding: 8px;
+	font-size: 20px;
+	margin-top: 10px;
+	text-align: center;
 }
 
 .footer {
