@@ -4,23 +4,44 @@ en:
     "no": 'No'
     required:
       text: 'required'
-      mark: '*'
+      mark: ''
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
     # Labels and hints examples
-    # labels:
-    #   defaults:
-    #     password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail to sign in.'
-    #     edit:
-    #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
+    labels:
+      defaults:
+        password: 'Password'
+      user:
+        new:
+          email: 'E-mail to sign in.'
+        edit:
+          email: 'E-mail.'
+
+      project: 
+        new: 
+          stage: 'At what stage is your project?'
+          difficulty: 'How difficult is your project?'
+
+
+    hints:
+      defaults:
+        username: 'User name to sign in.'
+        password: 'No special characters, please.'
+      project:
+        new:
+          name: 'e.g. Plant a living wall'
+          description: "e.g. Join me in designing, making, and installing a vertical garden in ABC university. Project involves visiting Singapore's local farm, beginner carpentry, and vigorous planting."
+          seeking: 'e.g. people with a green thumb, tree huggers, and curious minds'
+
+
+    placeholders: 
+      project:
+        name: '< 90 characters'
+        description: '< 200 characters'
+        seeking: '<144 characters'
+
+
 
