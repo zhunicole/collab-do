@@ -1,5 +1,18 @@
-.text-center
-  .page_header.text_gray COLLAB.DO
+.container
+	.row 
+		.page_header
+
+			.header_center.text_gray COLLAB.DO
+			%a.btn.btn-primary.header_right{href: new_project_path}
+				ADD
+				%i.icon-white.icon-plus
+
+
+			
+/= link_to 'COLLAB.DO', root_path
+			
+
+
 
 / %nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
 /   .container
