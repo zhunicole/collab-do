@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20131028054635) do
     t.string   "avatar"
     t.boolean  "featured",       default: false
     t.boolean  "approved",       default: false
-    t.integer  "difficulty"
+    t.string   "difficulty"
     t.text     "seeking"
-    t.integer  "stage"
+    t.text     "stage"
     t.integer  "num_interested"
     t.string   "project_email"
   end

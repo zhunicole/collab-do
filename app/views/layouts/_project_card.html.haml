@@ -11,8 +11,13 @@
       %i.icon-map-marker= ' ' + p.location
 
     .project_card_descrip
-      I am looking for: 
-      People with knowledge of manufacturing
+      =p.seeking
+
+    .project_card_descrip
+      =p.difficulty
+
+    .project_card_descrip
+      =p.stage
 
     %table.project_card_stats
       %row  

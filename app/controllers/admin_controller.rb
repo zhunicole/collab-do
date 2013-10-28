@@ -1,11 +1,11 @@
 class AdminController < ApplicationController
-	# before_action :authenticate_user!   
-	# before_action do
-	# 	if !current_user.admin then
-	# 		flash[:notice] = 'You are not an administrator'
-	# 		redirect_to '/home'
-	# 	end
-	# end
+	before_action :authenticate_user!   
+	before_action do
+		if !current_user.admin then
+			flash[:notice] = 'You are not an administrator'
+			redirect_to '/home'
+		end
+	end
 
 	def index
 		

@@ -48,6 +48,7 @@
 								%tr
 									%td= link_to p.name, project_path(p)
 									%td= link_to "Delete Project", remove_project_path(p), :data => { :confirm => "Are you sure?" }, :method => :delete
+									%td= link_to "Edit Project", edit_project_path(p)
 									-if p.featured
 										%td= link_to 'Featured', toggle_feature_project_path(p), class: 'green'
 									-else 

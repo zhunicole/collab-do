@@ -6,7 +6,7 @@ describe ProjectsController do
 		sign_in user
 	end
 
-	describe "POST create" do
+	pending "POST create" do
 		let(:do_request) { post :create, project: FactoryGirl.attributes_for(:project, creator_id: user.id) }		
 		
 		describe "creates new project" do
@@ -25,7 +25,7 @@ describe ProjectsController do
 		
 	end
 
-	describe "PUT update" do
+	pending "PUT update" do
 
 		describe "PUT 'update/:id'" do
 			before do 
@@ -46,7 +46,7 @@ describe ProjectsController do
 		end
 	end
 
-	describe '#collab' do
+	pending '#collab' do
 		# has user already
 		let(:project) { FactoryGirl.create(:project, id: user.id) }
 		let(:do_request) { get :collab, id: project.id }		
@@ -74,7 +74,7 @@ describe ProjectsController do
 		end
 	end
 
-	describe 'Actions when project is not active' do
+	pending 'Actions when project is not active' do
 		let(:project) { 
 			p = FactoryGirl.build(:project, id: user.id,
 			start_time: '2000-02-02 16:20:12', end_time: '2000-04-04 16:20:12')

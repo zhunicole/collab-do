@@ -42,6 +42,7 @@ gem 'fog', '~> 1.3.1'
 gem 'haml'
 
 gem 'simple_form'
+gem 'country_select'
 
 gem 'better_errors'
 
