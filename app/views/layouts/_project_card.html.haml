@@ -1,12 +1,17 @@
 .project_card.text-center
   %a{href: project_path(p)}
     .project_card_image=image_tag p.avatar.url
-    %h4.green= p.name 
+
+
+    .project_card_name
+      %h4.green= p.name 
+      .project_card_overlay= 'Difficulty: ' + p.difficulty
+
     / .project_card_descrip
     /   by 
     /   =p.creator.name
     .project_card_descrip
-      =truncate(p.description, length: 90, separator: ' ')
+      =p.description
     .project_card_descrip
       %i.icon-map-marker= ' ' + p.location
 

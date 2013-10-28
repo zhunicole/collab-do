@@ -114,13 +114,28 @@
 
 
 .project_card_image {
+}
 
+.project_card_name {
+	position: relative;
+}
+
+.project_card_overlay {
+
+	position:absolute;
+    left:0;
+    right:0;
+    /*bottom:0;*/
+    top: -30px;
+    height: 20px;
+    background-color:rgba(0,0,0,0.2);
+    z-index:9999;
+    color:white;
 }
 
 .project_card_descrip {
 	color: #7e7e7e;
 	padding-bottom: 10px;
-
 }
 
 .project_card_stats {
