@@ -6,10 +6,10 @@
 		%title= content_for?(:title) ? yield(:title) : "Collab"
 		%meta{content: content_for?(:description) ? yield(:description) : "Rails Bootstrap", name: "description"}/
 		= stylesheet_link_tag "application", :media => "all"
-		= javascript_include_tag "application"
 		= csrf_meta_tags
 	%body
 		%header.navbar.navbar-fixed-top= render 'layouts/navigation'
+
 
 		%main{role: "main"}
 			.container
@@ -19,9 +19,9 @@
 				- if alert
 					%p.alert.alert-error= alert
 
-
 			= yield
 
 		%footer.footer
 			.container
 				Copyright © Collab.do 2013
+		= javascript_include_tag "application"

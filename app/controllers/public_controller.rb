@@ -8,4 +8,12 @@ class PublicController < ApplicationController
 		@featured_users = User.featured
 	end
 
+	def connect
+
+	end
+
+	def add_collaber
+
+	end
+
 end

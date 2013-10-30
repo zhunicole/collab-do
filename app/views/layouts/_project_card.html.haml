@@ -22,8 +22,6 @@
 
     %hr.flat
 
-
-
     .project_card_descrip
       .green Project stage:
       .progress
@@ -47,9 +45,22 @@
           .project_card_counter= distance_of_time_in_words(DateTime.now, p.end_time)
           .text_gray left
 
-    .project_card_contact
-      CONTACT
-        
+.project_card_contact
+  %a.btn.btn-lg.contact_btn{"data-toggle" => "modal", href: "#myModal"} CONTACT
+  #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+          %h4.modal-title 
+        .modal-body
+          alfwkef
+          =render partial: 'layouts/contact_card', locals: {p: p}
+
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+          %button.btn.btn-primary.btn-lime{type: "button"} Save changes
+              
 
 
 

@@ -5807,7 +5807,7 @@ body.modal-open,
 }
 
 .modal-backdrop.in {
-  opacity: 0.5;
+  opacity: 0.7;
   filter: alpha(opacity=50);
 }
 
@@ -5815,6 +5815,17 @@ body.modal-open,
   min-height: 16.428571429px;
   padding: 15px;
   border-bottom: 1px solid #e5e5e5;
+  background-color: #192B33;
+}
+
+.btn-lime {
+  background-color: #CCCC52;
+  border-color: #CCCC52;
+}
+
+.btn-lime:hover {
+  background-color: #b5b536;
+  border-color: #b5b536;
 }
 
 .modal-header .close {
@@ -5824,11 +5835,14 @@ body.modal-open,
 .modal-title {
   margin: 0;
   line-height: 1.428571429;
+  color: white;
 }
 
 .modal-body {
   position: relative;
   padding: 20px;
+  color: #7e7e7e;
+  text-align: left;
 }
 
 .modal-footer {

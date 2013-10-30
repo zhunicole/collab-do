@@ -16,6 +16,7 @@
  *= require modern-business
  *= require fontawesome/font-awesome
 
+
  */
 
  nav ul {
@@ -75,7 +76,6 @@
 
 .orange {
 	color: #FF8000
-
 }
 
 .lime {
@@ -105,7 +105,7 @@
 	/*border-style: solid;*/
 	/*border-color: #eeeeee;*/
 	background-color: #f4f4f4;
-	margin-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 .project_card:hover {
@@ -122,10 +122,9 @@
 }
 
 .project_card_overlay {
-	position:absolute;
+	position: absolute;
     left:0;
     right:0;
-    /*bottom:0;*/
     top: -30px;
     height: 20px;
     background-color:rgba(0,0,0,0.2);
@@ -156,21 +155,37 @@
 	color: #0b1902;
 	overflow: hidden;
 	text-align: center;
-
 }
 
 .project_card_contact {
 	background-color: #FF8000;
-	color: white;
-	padding: 8px;
-	font-size: 20px;
-	margin-top: 10px;
 	text-align: center;
+	color: white;
+	margin-bottom: 20px;
+}
+
+.contact_btn {
+	width: 100%;
+	color: white;
+}
+.contact_btn:hover {
+	background-color: #F2780C;
+}
+
+a.btn.contact_btn:hover{
+	color: white;
 }
 
 .footer {
 	background-color: white;
 	color: #7e7e7e;
 	margin: 0
+}
 
+
+/* MODAL CSS */
+
+
+.modal-title {
+	
 }
