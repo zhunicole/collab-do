@@ -7,6 +7,7 @@ Collab::Application.routes.draw do
   root 'public#index'
 
   get '/about', to: 'public#about', as: 'about'
+  post '/add_collaber', to: 'public#add_collaber', as: 'add_collaber'
 
   devise_for :users, 
     :path => "users",

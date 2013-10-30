@@ -1,5 +1,3 @@
-
-
 %h4=p.name
 =p.location
 .div
@@ -10,9 +8,13 @@
 
 %h4= 'To: '+ p.project_email
 
-= simple_form_for p do |f| 
+= simple_form_for(:contact , url: '/add_collaber' ) do |f| 
 	
-	= f.input :id, required: true #as: :email
-	= f.input :id, required: true
+	= f.input :sender_email, required: true, as: :email
+	= f.input :message, required: true, as: :text
+	
 
-	= f.submit 'Create project'
+	.modal-footer
+		%button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+		%button.btn.btn-primary.btn-lime{type: "button"}= f.submit 'Send'
+		

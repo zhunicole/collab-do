@@ -13,6 +13,8 @@ class PublicController < ApplicationController
 	end
 
 	def add_collaber
+		flash[:notice] = 'Your message has been sent'
+		redirect_to root_path
 
 	end
 
