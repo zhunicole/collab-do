@@ -12,6 +12,7 @@
  *= require_tree .
  *= require bootstrap_and_overrides
  *= require bootstrap-datetimepicker
+ *= require simple_form
  *= require bootstrap
  *= require modern-business
  *= require fontawesome/font-awesome
@@ -201,9 +202,3 @@ a.btn.contact_btn:hover{
 }
 
 
-/* MODAL CSS */
-
-
-.modal-title {
-	
-}
