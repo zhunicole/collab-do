@@ -5746,7 +5746,10 @@ body.modal-open,
 
 .modal {
   position: fixed;
-
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 1040;
   display: none;
   overflow: auto;
@@ -5770,10 +5773,11 @@ body.modal-open,
 }
 
 .modal-dialog {
+  position: relative;
   z-index: 1050;
   width: auto;
-  /*TODO padding: 10px;*/
-  /*margin-right: auto;*/
+  padding: 10px;
+  margin-right: auto;
   margin-left: auto;
 }
 
@@ -5885,8 +5889,10 @@ body.modal-open,
 
 @media screen and (min-width: 768px) {
   .modal-dialog {
- /*  TODO padding-top: 30px;
-    padding-bottom: 30px;*/
+ 
+    width: 600px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
