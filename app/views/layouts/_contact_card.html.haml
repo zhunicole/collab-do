@@ -12,7 +12,7 @@
 
 	%h4= 'To: '+ p.project_email
 
-	= simple_form_for(:contact , html: {class: 'form-horizontal' }, url: '/add_collaber' ) do |f| 
+	= simple_form_for(:contact , html: {class: 'form-horizontal' }, url: '/collab_request' ) do |f| 
 		
 		= f.input :sender_email, required: true, as: :email, input_html: {style: 'width: 50%; border: 1px solid orange; border-radius: 3px;'}, placeholder: 'my_email@domain.com'
 		= f.input :message, required: true, as: :text, input_html: {rows: 5, style: 'width: 100%; border: 1px solid orange; border-radius: 3px;'}, placeholder: 'message'
