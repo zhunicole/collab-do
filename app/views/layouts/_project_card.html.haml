@@ -1,49 +1,52 @@
 .project_card
-  %a{href: project_path(p)}
-    =image_tag p.avatar.url, width: '100%'
+  / %a{href: project_path(p)}
+  =image_tag p.avatar.url, width: '100%'
 
 
-    .project_card_name
-      %h4.green= p.name 
-      .project_card_overlay= 'Difficulty: ' + p.difficulty
-
-    .project_card_descrip
-      =p.description
-
-    .project_card_descrip.text-center
-      %i.icon-map-marker.green= ' ' + p.location
-
-    %hr.flat
+  .project_card_name
+    %h4.green= p.name 
+    .project_card_overlay
+      %i.icon-map-marker.overlay_text
+      = '   ' + p.location
       
-    .project_card_descrip
-      .green I'm looking for:
-      = p.seeking
+
+  .project_card_descrip
+    =p.description
+
+  / .project_card_descrip.text-center
+  /   %i.icon-map-marker.green= ' ' + p.location
+
+  %hr.flat
+    
+  .project_card_descrip
+    .green I'm looking for:
+    = p.seeking
 
 
-    %hr.flat
+  %hr.flat
 
-    .project_card_descrip
-      .green Project stage:
-      .progress
-        - if p.stage == 'Just an idea'
-          .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "1", role: "progressbar", style: "width: 33%"}
-            =p.stage
-        - elsif p.stage == 'Pretty certain'  
-          .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width: 66%"}
-            = p.stage
-        - else
-          .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "3", role: "progressbar", style: "width: 100%"}
-            =p.stage
+  .project_card_descrip
+    .green How serious am I?:
+    .progress
+      - if p.stage == 'Just an idea'
+        .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "1", role: "progressbar", style: "width: 33%"}
+          =p.stage
+      - elsif p.stage == 'Pretty certain'  
+        .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width: 66%"}
+          = p.stage
+      - else
+        .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "3", role: "progressbar", style: "width: 100%"}
+          =p.stage
 
-    %table.project_card_stats
-      %row
-        %td
-          .project_card_counter= p.num_interested ? p.num_interested : '< 5'
-          .text_gray interested
-        %td
-          - hoursLeft = (p.end_time - DateTime.now)/60/60/30
-          .project_card_counter= distance_of_time_in_words(DateTime.now, p.end_time)
-          .text_gray left
+  %table.project_card_stats
+    %row
+      %td
+        .project_card_counter= p.num_interested ? p.num_interested : '< 5'
+        .text_gray interested
+      %td
+        - hoursLeft = (p.end_time - DateTime.now)/60/60/30
+        .project_card_counter= distance_of_time_in_words(DateTime.now, p.end_time)
+        .text_gray left
 
 .project_card_contact
   %a.btn.btn-lg.contact_btn{"data-toggle" => "modal", href: "#myModal"} CONTACT
