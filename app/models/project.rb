@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
 
 	validates :start_time, presence: true
 	validates :end_time, presence: true
-
+	validates :avatar, presence: true
 	validate :valid_times
 
 
