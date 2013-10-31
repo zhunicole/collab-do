@@ -28,16 +28,17 @@ class Project < ActiveRecord::Base
 
 
 	def valid_times
-		if end_time < start_time
-			errors.add(:end_time, 'cannot be before your start date' ) 
-		end 
+		if !end_time.nil? and !start_time.nil? then 
+			if end_time < start_time
+				errors.add(:end_time, 'cannot be before your start date' ) 
+			end 
 
-		if start_time < DateTime.now
-			errors.add(:start_time, 'cannot be before now')
+			if start_time < DateTime.now
+				errors.add(:start_time, 'cannot be before now')
+			end
+			#TODO: at one point, only permit total lapse <= weekend
 		end
-		#TODO: at one point, only permit total lapse <= weekend
 	end
-
 
 	def creator
 		User.find(creator_id)
