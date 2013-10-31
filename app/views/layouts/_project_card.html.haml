@@ -47,16 +47,8 @@
 
 .project_card_contact
   %a.btn.btn-lg.contact_btn{"data-toggle" => "modal", href: "#myModal"} CONTACT
-  #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
-    .modal-dialog
-      .modal-content
-        .modal-header
-          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
-          %h4.modal-title 
-        .modal-body
-          
-          =render partial: 'layouts/contact_card', locals: {p: p}
- 
+
+
 
 
 
