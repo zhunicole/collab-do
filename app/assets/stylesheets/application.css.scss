@@ -175,11 +175,10 @@ input[type="submit"] {
   	text-shadow: none;
   	box-shadow: none;
   	border: none;
-  	padding: 10px 16px;
-  	font-size: 18px;
+  	padding: 8px 16px;
   	line-height: 1.33;
   	border-radius: 6px;
-  	margin-top: 10px;
+  	
 }
 
 .help-inline {
@@ -192,6 +191,12 @@ a.btn.contact_btn:hover {
 
 a.btn.contact_btn:hover{
 	color: white;
+}
+
+
+.postcard_descrip {
+	padding-left: 10px;
+
 }
 
 .footer {

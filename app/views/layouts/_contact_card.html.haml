@@ -1,20 +1,25 @@
-%h4=p.name
-=p.location
-.div
-	- hoursLeft = (p.end_time - DateTime.now)/60/60/30
-	= distance_of_time_in_words(DateTime.now, p.end_time) + ' left'
+%table
+	%tr
+		%td= image_tag p.avatar.preview.url
+		%td.postcard_descrip
+			%h4=p.name
+			=p.location
+			.div
+				- hoursLeft = (p.end_time - DateTime.now)/60/60/30
+				= distance_of_time_in_words(DateTime.now, p.end_time) + ' left'
 
 .div
+%hr
 
-%h4= 'To: '+ p.project_email
+	%h4= 'To: '+ p.project_email
 
-= simple_form_for(:contact , url: '/add_collaber' ) do |f| 
-	
-	= f.input :sender_email, required: true, as: :email
-	= f.input :message, required: true, as: :text
-	
-
-	.modal-footer
-		%button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
-		= f.submit 'Send'
+	= simple_form_for(:contact , url: '/add_collaber' ) do |f| 
 		
+		= f.input :sender_email, required: true, as: :email
+		= f.input :message, required: true, as: :text
+		
+
+		.modal-footer
+			%button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+			= f.submit 'Send'
+			
