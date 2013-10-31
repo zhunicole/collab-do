@@ -5748,6 +5748,7 @@ body.modal-open,
   top: 0;
   right: 0;
   bottom: 0;
+/*  left: 0; screwing modal positioning */  
   z-index: 1040;
   display: none;
   overflow: auto;
@@ -5771,10 +5772,9 @@ body.modal-open,
 }
 
 .modal-dialog {
-  position: relative;
   z-index: 1050;
   width: auto;
-  padding: 10px;
+  /*TODO padding: 10px;*/
   margin-right: auto;
   margin-left: auto;
 }
@@ -5888,8 +5888,8 @@ body.modal-open,
 @media screen and (min-width: 768px) {
   .modal-dialog {
     width: 600px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+ /*  TODO padding-top: 30px;
+    padding-bottom: 30px;*/
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
