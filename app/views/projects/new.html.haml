@@ -3,35 +3,35 @@
 	.container
 		.row
 			.col-lg-12
-				%h2 New project
+				%legend New project
+				.pull-center
+					= simple_form_for(@project, html: {class: 'form-horizontal' }) do |f|
+						= f.input :name, required: false, hint: true
+						= f.input :description, required: false
+						= f.input :location, required: false, priority: ['Singapore'], collection: ['Singapore', 'United States', 'Canada'], default: 'Singapore'
 
-				= simple_form_for @project do |f| 
-					= f.input :name, required: true
-					= f.input :description, required: true
-					= f.input :location, required: true, priority: ['Singapore'], collection: ['Singapore', 'United States', 'Canada'], default: 'Singapore'
+						= f.input :difficulty, required: false, collection: ['easy', 'medium', 'hard'], as: :radio_buttons, :input_html => { :class => "radio-inline" }
 
-					= f.input :difficulty, required: true, collection: ['easy', 'medium', 'hard'], as: :radio_buttons
+						= f.input :stage, required: false, collection: ['Just an idea','Pretty certain', 'Successful project'], as: :radio_buttons
 
-					= f.input :stage, required: true, collection: ['Just an idea','Pretty certain', 'Successful project'], as: :radio_buttons, label: 'At what stage is your project?'
+						= f.input :seeking, required: false
 
-					= f.input :seeking, required: true
+						= f.input :project_email, required: false, as: :email
 
-					= f.input :project_email, required: true, as: :email
-
-					#datetimepicker.input-append.date
-						= f.input :start_time, value: DateTime.now, inline_label: true, required: true do
-							= f.input_field :start_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
-							%span.add-on
-								%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
-					#datetimepicker2.input-append.date
-						= f.input :end_time, value: DateTime.now, inline_label: true, required: true do
-							= f.input_field :end_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
-							%span.add-on
-								%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
-					= f.input :avatar, required: true
+						#datetimepicker.input-append.date
+							= f.input :start_time, value: DateTime.now, inline_label: true, required: true do
+								= f.input_field :start_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
+								%span.add-on
+									%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+						#datetimepicker2.input-append.date
+							= f.input :end_time, value: DateTime.now, inline_label: true, required: true do
+								= f.input_field :end_time, :as => :string, "data-format" => "yyyy/MM/dd hh:mm:ss" 
+								%span.add-on
+									%i{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
+						= f.input :avatar, required: false
 
 
-					.create_btn= f.submit 'Create project'
+						= f.submit 'Create project'
 
 
 
