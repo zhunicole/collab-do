@@ -5772,7 +5772,7 @@ body.modal-open,
   z-index: 1050;
   width: auto;
   /*TODO padding: 10px;*/
-  margin-right: auto;
+  /*margin-right: auto;*/
   margin-left: auto;
 }
 
@@ -5884,7 +5884,6 @@ body.modal-open,
 
 @media screen and (min-width: 768px) {
   .modal-dialog {
-    width: 600px;
  /*  TODO padding-top: 30px;
     padding-bottom: 30px;*/
   }
