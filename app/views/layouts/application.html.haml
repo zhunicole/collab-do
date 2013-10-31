@@ -8,16 +8,17 @@
 		= stylesheet_link_tag "application", :media => "all"
 		= csrf_meta_tags
 	%body
+		.container
+			= render 'layouts/messages'
+			- if notice
+				%p.alert.alert-notice= notice
+			- if alert
+				%p.alert.alert-error= alert
 		%header.navbar.navbar-fixed-top= render 'layouts/navigation'
 
 
 		%main{role: "main"}
-			.container
-				= render 'layouts/messages'
-				- if notice
-					%p.alert.alert-notice= notice
-				- if alert
-					%p.alert.alert-error= alert
+			
 
 			= yield
 
