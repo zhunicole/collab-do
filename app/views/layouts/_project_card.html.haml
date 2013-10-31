@@ -25,15 +25,15 @@
     .project_card_descrip
       .green Project stage:
       .progress
-        - if p.stage = 'Just an idea'
+        - if p.stage == 'Just an idea'
           .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "1", role: "progressbar", style: "width: 33%"}
-            = p.stage
-        - elsif p.stage = 'Pretty certain'  
+            =p.stage
+        - elsif p.stage == 'Pretty certain'  
           .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "2", role: "progressbar", style: "width: 66%"}
             = p.stage
         - else
           .progress-bar.progress-bar-success{"aria-valuemax" => "3", "aria-valuemin" => "0", "aria-valuenow" => "3", role: "progressbar", style: "width: 100%"}
-            = p.stage
+            =p.stage
 
     %table.project_card_stats
       %row
@@ -47,7 +47,7 @@
 
 .project_card_contact
   %a.btn.btn-lg.contact_btn{"data-toggle" => "modal", href: "#myModal"} CONTACT
-  
+
   #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
     .modal-dialog
       .modal-content
