@@ -5746,7 +5746,7 @@ body.modal-open,
 .modal {
   position: fixed;
 
-  z-index: 1000;
+  z-index: 1040;
   display: none;
   overflow: auto;
   overflow-y: scroll;
