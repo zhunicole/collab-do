@@ -7,10 +7,17 @@
 				=@project.name
 
 
-				= simple_form_for @project do |f| 
+				= simple_form_for(@project, html: {class: 'form-horizontal' }) do |f|
 					= f.input :name, value: @project.name, required: true
 					= f.input :description, value: @project.description, required: true
-					= f.input :location, value: @project.name, required: true
+					= f.input :location, value: @project.name, required: true, collection: ['Singapore', 'United States', 'Canada']
+					= f.input :difficulty, value: @project.difficulty, collection: ['easy', 'medium', 'hard'], as: :radio_buttons, :input_html => { :class => "radio-inline" }
+
+					= f.input :stage, value: @project.stage, collection: ['Just an idea','Pretty certain', 'Successful project'], as: :radio_buttons
+
+					= f.input :seeking, value: @project.seeking
+
+					= f.input :project_email, value: @project.project_email, as: :email
 
 					#datetimepicker.input-append.date
 						= f.input :start_time, value: @project.start_time,inline_label: true do

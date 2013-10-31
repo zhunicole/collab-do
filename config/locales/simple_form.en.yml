@@ -26,7 +26,6 @@ en:
           description: 'Project description'
           stage: 'At what stage is your project?'
 
-
     hints:
       defaults:
         username: 'User name to sign in.'
