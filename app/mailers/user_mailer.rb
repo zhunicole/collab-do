@@ -15,5 +15,5 @@ class UserMailer < ActionMailer::Base
   	@message = message
 
   	mail(to: @receiver, subject: 'Someone is interested in joining your project!')
-
+	end
 end
