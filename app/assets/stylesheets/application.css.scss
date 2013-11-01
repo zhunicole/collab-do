@@ -116,6 +116,11 @@
 .project_card_name {
 	position: relative;
 	padding-left: 10px;
+	margin-bottom: 10px;
+
+	line-height: 3.5ex;
+	height: 7ex; 
+	overflow: hidden;
 }
 
 .project_card_overlay {
@@ -137,8 +142,31 @@
 
 .project_card_descrip {
 	color: #7e7e7e;
-	padding: 10px;
-	padding-top: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+
+
+	line-height: 2.5ex;
+	height: 12.5ex; 
+	overflow: hidden;
+
+}
+
+.project_card_seeking {
+	color: #7e7e7e;
+	padding-left: 10px;
+	padding-right: 10px;
+
+	line-height: 2.5ex;
+	height: 7.5ex; 
+	overflow: hidden;
+
+}
+
+.project_card_certainty {
+	color: #7e7e7e;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .project_card_counter {

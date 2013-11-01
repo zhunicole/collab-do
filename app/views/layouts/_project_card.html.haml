@@ -13,19 +13,17 @@
   .project_card_descrip
     =p.description
 
-  / .project_card_descrip.text-center
-  /   %i.icon-map-marker.green= ' ' + p.location
 
   %hr.flat
     
-  .project_card_descrip
+  .project_card_seeking
     .green I'm looking for:
-    = p.seeking
+    .text_gray= p.seeking
 
 
   %hr.flat
 
-  .project_card_descrip
+  .project_card_certainty
     .green How serious am I?:
     .progress
       - if p.stage == 'Just an idea'
